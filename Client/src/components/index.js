@@ -1,6 +1,7 @@
 import React from "react";
-import Auth from "../../utils/auth";
+import Auth from "../utils/auth";
 import { Link } from "react-router-dom";
+import navLogo from "../assets/navlogo.png"
 
 function Nav() {
 
@@ -40,8 +41,7 @@ function Nav() {
     <header className="flex-row px-1">
       <h1>
         <Link to="/">
-          <span role="img" aria-label="shopping bag"></span>
-          Innerpattern
+        <img src={navLogo} alt="" className="navLogo" />
         </Link>
       </h1>
 
