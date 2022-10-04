@@ -1,29 +1,18 @@
 {
-  "name": "mern-client",
+  "name": "innterpattern",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3001/",
   "dependencies": {
+    "@apollo/client": "^3.6.9",
     "@apollo/react-hooks": "^4.0.0",
-    "@reduxjs/toolkit": "^1.5.0",
-    "@stripe/stripe-js": "^1.13.1",
-    "@testing-library/jest-dom": "^5.11.9",
-    "@testing-library/react": "^11.2.5",
-    "@testing-library/user-event": "^12.8.3",
     "apollo-boost": "^0.4.9",
-    "apollo-link-context": "^1.0.20",
-    "bootstrap": "^4.6.0",
-    "graphql": "^15.5.0",
-    "graphql-tag": "^2.11.0",
-    "jwt-decode": "^3.1.2",
-    "react": "^17.0.1",
-    "react-bootstrap": "^1.5.2",
-    "react-dom": "^17.0.1",
-    "react-redux": "^7.2.2",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "^4.0.3",
-    "redux": "^4.0.5",
-    "redux-devtools-extension": "^2.13.9"
+    "graphql": "^16.6.0",
+    "jwt-decode": "^2.2.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-redux": "^8.0.4",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -32,7 +21,10 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
     "production": [
