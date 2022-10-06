@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&display=swap");
 
 :root {
-  --primary: #232F3E;
-  --secondary: #F3A847;
-  --tertiary: #B12704;
+  --primary: #232f3e;
+  --secondary: #f3a847;
+  --tertiary: #b12704;
   --light: #fafafa;
   --dark: #272f32;
   --error: rgb(228, 46, 1);
@@ -23,7 +23,7 @@ body {
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 400;
   line-height: 1.5;
   font-size: 16px;
@@ -36,7 +36,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
   font-weight: 500;
   margin: 5px 0;
   line-height: 1.25;
@@ -81,17 +81,29 @@ a:hover {
   text-decoration: underline;
 }
 
+#brand-logo {
+  width: 180px;
+  height: 50px;
+  margin: 15px 0;
+}
+
 header {
   background: var(--primary);
+  position: sticky;
+  top: 0;
 }
 
 header a {
   color: var(--light);
+  padding: 10px;
+}
+
+.padding-none {
+  padding: 0;
 }
 
 .LandingContainer {
-  background: linear-gradient(rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0.5)),
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(./assets/LandingBG.jpg);
   width: 100%;
   height: 100vh;
@@ -103,7 +115,7 @@ header a {
   align-items: center;
   height: 100vh;
   width: 100vw;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .divContainer {
@@ -124,7 +136,7 @@ header a {
   letter-spacing: 2px;
   margin-bottom: 10vh;
   font-weight: 300;
-  text-align: center;  
+  text-align: center;
 }
 
 .LandingBtn {
@@ -139,7 +151,7 @@ button {
   font-size: 1rem;
   text-decoration: none;
   padding: 0.25rem 1rem;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   border: none;
   outline: none;
   cursor: pointer;
@@ -148,12 +160,12 @@ button {
 }
 
 button:hover {
-  opacity: .8;
+  opacity: 0.8;
 }
 
 button[disabled] {
   cursor: default;
-  opacity: .8;
+  opacity: 0.8;
 }
 
 img {
@@ -179,7 +191,7 @@ input {
 
 input:focus {
   border: 1px solid var(--secondary);
-  box-shadow: 0 0 .25rem rgba(0, 0, 0, .5);
+  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5);
 }
 
 .container {
@@ -187,7 +199,106 @@ input:focus {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
+
+/* journal form styling */
+
+.journal-form {
+  height: 100vh;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+input {
+  text-align: center;
+}
+
+.inputBox {
+  position: relative;
+  width: 100%;
+  margin-bottom: 5%;
+}
+
+.inputBox input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #fff;
+  background: #748da6;
+  border-radius: 5px;
+  outline: none;
+  color: #ffffff;
+  font-size: 1em;
+  transition: 0.5s ease-in-out;
+}
+
+.inputBox span {
+  position: absolute;
+  left: 0;
+  padding: 10px;
+  pointer-events: none;
+  font-size: 1em;
+  color: rgba(255, 255, 255, 0.25);
+  text-transform: uppercase;
+  transition: 0.5s ease-in-out;
+}
+
+.inputBox input:focus ~ span {
+  color: #748da6;
+  transform: translateX(30px) translateY(-7px);
+  font-size: 0.65em;
+  padding: 0 10px;
+  background: #ffffff;
+  border-left: 1px solid #000000;
+  border-right: 1px solid #000000;
+  letter-spacing: 0.2em;
+}
+
+.inputBox input:focus {
+  border: 1px solid #000000;
+}
+
+.inputBoxMessage {
+  height: 6rem;
+}
+
+.inputBoxMessageInput {
+  height: 6rem;
+  text-align: left;
+}
+
+/* The input buttons */
+
+.inputBoxBtnContainer {
+  text-align: center;
+}
+
+.inputBoxBtn {
+  text-align: center;
+  background-color: #47b5ff;
+  border: 0;
+  width: 8rem;
+  height: 2.25rem;
+  padding: 1%;
+  color: #ffffff;
+  font-weight: bold;
+  transition: 0.5s ease-in-out;
+  border-radius: 5px;
+  letter-spacing: 1.25px;
+}
+
+.inputBoxBtn:hover {
+  box-shadow: 10px 10px 20px black;
+  transform: translateY(-10px);
+  transition: 0.5s ease-in-out;
+}
+
+/*  */
 
 .flex-row {
   display: flex;
