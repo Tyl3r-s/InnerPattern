@@ -231,7 +231,7 @@ input:focus {
 /* journal form styling */
 
 .journal-form,
-.signup-form {
+.signup-form, .login-form {
   height: 100vh;
   width: 100%;
   align-items: center;
@@ -241,7 +241,15 @@ input:focus {
   background: repeating-linear-gradient(45deg, #f9f9f9, transparent 20px);
 }
 
-.signup-header {
+.signup-form {
+  height: 85vh;
+}
+
+.login-form {
+  height: 80vh;
+}
+
+.signup-header, .login-header {
   margin-bottom: 35px;
 }
 
@@ -339,6 +347,17 @@ input {
 }
 
 /*  */
+
+footer {
+  display: flex;
+  align-items: center;
+  background: var(--primary);
+  color: #ffffff;
+  justify-content: center;
+  height: 5rem;
+  padding: 20px;
+  width: 100%;
+}
 
 .flex-row {
   display: flex;

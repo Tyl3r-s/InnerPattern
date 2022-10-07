@@ -1,5 +1,6 @@
 import React from "react";
 import Navigation from "../pages/Navigation";
+import Footer from "../pages/Footer";
 
 const CreateJournalEntry = () => {
   return (
@@ -58,6 +59,7 @@ const CreateJournalEntry = () => {
           </form>
         </div>
       </main>
+      <Footer />
     </div>
   );
 };

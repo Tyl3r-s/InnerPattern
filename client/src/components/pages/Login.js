@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/react-hooks";
-import { Link } from "react-router-dom";
 import { LOGIN } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 import Navigation from "../pages/Navigation";
@@ -34,44 +33,47 @@ function Login(props) {
   return (
     <div>
       <Navigation />
-      <div className="container my-1">
-        <Link to="/signup">← Go to Signup</Link>
-
-        <h2>Login</h2>
-        <form onSubmit={handleFormSubmit}>
-          <div className="flex-row space-between my-2">
-            <label htmlFor="email">Email address:</label>
-            <input
-              placeholder="youremail@test.com"
-              name="email"
-              type="email"
-              id="email"
-              onChange={handleChange}
-            />
-          </div>
-          <div className="flex-row space-between my-2">
-            <label htmlFor="pwd">Password:</label>
-            <input
-              placeholder="******"
-              name="password"
-              type="password"
-              id="pwd"
-              onChange={handleChange}
-            />
-          </div>
-          {error ? (
-            <div>
-              <p className="error-text">
-                The provided credentials are incorrect
-              </p>
+      <main>
+        <div className="login-form">
+          <h4 className="login-header">Login</h4>
+          <form onSubmit={handleFormSubmit} id="signup-flex">
+            <div className="inputBox twenty-wide five-margin">
+              <input
+                name="email"
+                type="email"
+                id="email"
+                onChange={handleChange}
+              />
+              <span>Email address:</span>
             </div>
-          ) : null}
-          <div className="flex-row flex-end">
-            <button type="submit">Submit</button>
-          </div>
-        </form>
-        <Footer />
-      </div>
+            <div className="inputBox twenty-wide five-margin">
+              <input
+                name="password"
+                type="password"
+                id="pwd"
+                onChange={handleChange}
+              />
+              <span>Password:</span>
+            </div>
+            {error ? (
+              <div>
+                <p className="error-text">
+                  The provided credentials are incorrect
+                </p>
+              </div>
+            ) : null}
+            <div className="inputBoxBtnContainer">
+              <button type="submit" className="inputBoxBtn">
+                Submit
+              </button>
+            </div>
+            <p>
+              Don't Have An Account? <a href="/SignUp">Sign Up</a>
+            </p>
+          </form>
+        </div>
+      </main>
+      <Footer />
     </div>
   );
 }

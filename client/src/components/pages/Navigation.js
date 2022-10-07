@@ -6,7 +6,9 @@ import Navbar from "react-bootstrap/Navbar";
 import navLogo from "../../assets/navlogo.png";
 
 function Navigation() {
+
   function showNavigation() {
+
     if (Auth.loggedIn()) {
       return (
         <Navbar bg="dark">
@@ -35,9 +37,8 @@ function Navigation() {
               <img src={navLogo} id="brand-logo" alt="Brand logo" />
             </Navbar.Brand>
             <Nav className="me-auto">
-              <Nav.Link href="/Login">Login</Nav.Link>
+              <Nav.Link href="/Login" id="login">Login</Nav.Link>
               <Nav.Link href="/Signup">Signup</Nav.Link>
-              <Nav.Link href="/JoinUs">Join Us</Nav.Link>
               <Nav.Link href="/CreateJournalEntry">Create Entry</Nav.Link>
             </Nav>
           </Container>
@@ -48,5 +49,4 @@ function Navigation() {
 
   return <header>{showNavigation()}</header>;
 }
-
 export default Navigation;
