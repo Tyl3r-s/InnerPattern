@@ -1,11 +1,19 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User } = require('../models');
-const Entry = require('../models/Entry');
+const { User, Entry } = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
   Query: {
+    users: async (parent, args) => {
+      // THIS QUERY FOR TESTING ONLY!!!!!
+        const users = await User.find();
+
+        return users;
+      // }
+
+      // throw new AuthenticationError('Not logged in');
+    },
     user: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
@@ -55,6 +63,22 @@ const resolvers = {
         await User.findByIdAndUpdate(
           {
             _id: context.user._id
+          },
+          {
+            $push: { entries: entry._id}
+          },
+          {
+            new: true
+          }
+        );
+
+        return entry;
+        // ELSE STATEMENT FOR TESTING - TO BE REMOVED
+      } else {
+        const entry = await Entry.create({args});
+        await User.findOneAndUpdate(
+          {
+            email: args.email
           },
           {
             $push: { entries: entry._id}
