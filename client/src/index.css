@@ -389,23 +389,25 @@ ul li {
   width: 40%;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 25px;
+  padding: 0 25px;
 }
 
 .full-width {
   width: 45%;
   text-align: center;
-  margin: 10px 0;
+  background: var(--primary);
+  color: #ffffff;
   border-radius: 25px;
+  margin-bottom: 10px;
 }
 
-.full-width, .single-entry-card {
-  background:#ffffff;
+.single-entry-card {
+  background: #ffffff;
 }
 
 .single-entry {
   align-self: start;
-  margin: 35px 0;
+  padding: 0 25px;
 }
 
 .single-entry-card {
