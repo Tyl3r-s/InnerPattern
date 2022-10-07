@@ -7,11 +7,11 @@ const CreateJournalEntry = () => {
       <Navigation />
       <main>
         <div className="journal-form">
-          <h4 className="journal-header" id="journal-header">
-            Create An Entry
-          </h4>
           <form>
             <div className="inputBox">
+              <h4 className="journal-header" id="journal-header">
+                Create An Entry
+              </h4>
               <input
                 type="text"
                 name="title"
@@ -21,19 +21,30 @@ const CreateJournalEntry = () => {
               <span>Title:</span>
             </div>
             <div className="inputBox">
-              <input
-                name="mood"
-                type="text"
-                required="required"
-                className="inputBox"
-              />
-              <span>My Mood:</span>
-            </div>
-            <div className="inputBox inputBoxMessage">
-              <input name="body" type="text" required="required" />
+              <h4>Journal Content</h4>
+              <input name="entryText" type="text" required="required" className="inputBoxMessage"/>
               <span>Body:</span>
             </div>
-
+            <div className="inputBoxBottom">
+              <h4>My Mood</h4>
+              <ul className="moods">
+                <li className="mood" id="mood-1">
+                  <span role="img" aria-label="mood emoji">😔</span>
+                </li>
+                <li className="mood" id="mood-2">
+                <span role="img" aria-label="mood emoji">🙁</span>
+                </li>
+                <li className="mood" id="mood-3">
+                <span role="img" aria-label="mood emoji">😐</span>
+                </li>
+                <li className="mood" id="mood-4">
+                <span role="img" aria-label="mood emoji">🙂</span>
+                </li>
+                <li className="mood" id="mood-5">
+                <span role="img" aria-label="mood emoji">😊</span>
+                </li>
+              </ul>
+            </div>
             <div className="inputBoxBtnContainer">
               <button
                 type="submit"

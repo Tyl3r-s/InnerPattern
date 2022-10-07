@@ -9,15 +9,18 @@
   --error: rgb(228, 46, 1);
   --spacing-one: calc(1rem * 0.5);
   --spacing-two: calc(1rem);
+  margin: 0;
 }
 
 * {
   box-sizing: border-box;
+  margin: 0;
 }
 
 html,
 body {
   min-height: 100%;
+  margin: 0;
 }
 
 body {
@@ -77,6 +80,18 @@ a {
   font-weight: bold;
 }
 
+ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+ul li {
+  font-size: xx-large;
+}
+
 a:hover {
   text-decoration: underline;
 }
@@ -91,6 +106,7 @@ header {
   background: var(--primary);
   position: sticky;
   top: 0;
+  z-index: 1000;
 }
 
 header a {
@@ -177,10 +193,18 @@ span[role="img"] {
 }
 
 form {
-  width: 40%;
+  width: 60%;
+  text-align: center;
 }
 
-input {
+#signup-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* input {
   font-size: 1rem;
   padding: 0.25rem;
   border: 1px solid var(--dark);
@@ -192,7 +216,7 @@ input {
 input:focus {
   border: 1px solid var(--secondary);
   box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5);
-}
+} */
 
 .container {
   width: 85%;
@@ -206,31 +230,39 @@ input:focus {
 
 /* journal form styling */
 
-.journal-form {
+.journal-form,
+.signup-form {
   height: 100vh;
   width: 100%;
   align-items: center;
   display: flex;
   justify-content: center;
   flex-direction: column;
+  background: repeating-linear-gradient(45deg, #f9f9f9, transparent 20px);
+}
+
+.signup-header {
+  margin-bottom: 35px;
 }
 
 input {
   text-align: center;
 }
 
-.inputBox {
+.inputBox,
+.inputBoxBottom {
   position: relative;
   width: 100%;
-  margin-bottom: 5%;
+  margin-bottom: 10%;
 }
 
 .inputBox input {
   width: 100%;
   padding: 10px;
   border: 1px solid #fff;
-  background: #748da6;
+  background: #47b5ff;
   border-radius: 5px;
+  text-align: left;
   outline: none;
   color: #ffffff;
   font-size: 1em;
@@ -243,13 +275,13 @@ input {
   padding: 10px;
   pointer-events: none;
   font-size: 1em;
-  color: rgba(255, 255, 255, 0.25);
+  color: black;
   text-transform: uppercase;
   transition: 0.5s ease-in-out;
 }
 
 .inputBox input:focus ~ span {
-  color: #748da6;
+  color: #445d77;
   transform: translateX(30px) translateY(-7px);
   font-size: 0.65em;
   padding: 0 10px;
@@ -264,12 +296,19 @@ input {
 }
 
 .inputBoxMessage {
-  height: 6rem;
+  height: 120px;
 }
 
-.inputBoxMessageInput {
-  height: 6rem;
-  text-align: left;
+.inputBoxBottom {
+  margin-bottom: 3%;
+}
+
+.twenty-wide {
+  width: 20rem;
+}
+
+.five-margin {
+  margin-bottom: 5%;
 }
 
 /* The input buttons */
@@ -290,6 +329,7 @@ input {
   transition: 0.5s ease-in-out;
   border-radius: 5px;
   letter-spacing: 1.25px;
+  margin-bottom: 5%;
 }
 
 .inputBoxBtn:hover {
