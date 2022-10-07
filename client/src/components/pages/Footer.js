@@ -4,7 +4,7 @@ export default function Footer() {
     return (
         <footer className="footerClass">
 
-            <div class="copyright">
+            <div className="copyright">
                 <p>copyright 2022 &copy; InnerPattern</p>
             </div>
         </footer>

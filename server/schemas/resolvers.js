@@ -1,5 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User } = require('../models');
+const Entry = require('../models/Entry');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
@@ -46,6 +47,25 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
+    },
+    addEntry: async (parent, args, context) => {
+      if (context.user) {
+        const entry = await Entry.create({...args, username: context.user.username });
+        await User.findByIdAndUpdate(
+          {
+            _id: context.user._id
+          },
+          {
+            $push: { entries: entry._id}
+          },
+          {
+            new: true
+          }
+        );
+
+        return entry;
+      }
+      throw new AuthenticationError('You need to be looged in!');
     }
   }
 };
