@@ -51,7 +51,7 @@ const resolvers = {
     },
     addEntry: async (parent, args, context) => {
       if (context.user) {
-        const entry = await Entry.create({...args, username: context.user.username });
+        const entry = await Entry.create({...args, email: context.user.email });
         await User.findByIdAndUpdate(
           {
             _id: context.user._id
@@ -66,7 +66,7 @@ const resolvers = {
 
         return entry;
       }
-      throw new AuthenticationError('You need to be looged in!');
+      throw new AuthenticationError('You need to be logged in!');
     }
   }
 };
