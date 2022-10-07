@@ -5,7 +5,7 @@
   --secondary: #f3a847;
   --tertiary: #b12704;
   --light: #fafafa;
-  --dark: #272f32;
+  --dark: #091013;
   --error: rgb(228, 46, 1);
   --spacing-one: calc(1rem * 0.5);
   --spacing-two: calc(1rem);
@@ -78,18 +78,6 @@ a {
   color: var(--tertiary);
   text-decoration: none;
   font-weight: bold;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-ul li {
-  font-size: xx-large;
 }
 
 a:hover {
@@ -231,7 +219,8 @@ input:focus {
 /* journal form styling */
 
 .journal-form,
-.signup-form, .login-form {
+.signup-form,
+.login-form {
   height: 100vh;
   width: 100%;
   align-items: center;
@@ -249,7 +238,8 @@ input:focus {
   height: 80vh;
 }
 
-.signup-header, .login-header {
+.signup-header,
+.login-header {
   margin-bottom: 35px;
 }
 
@@ -344,6 +334,104 @@ input {
   box-shadow: 10px 10px 20px black;
   transform: translateY(-10px);
   transition: 0.5s ease-in-out;
+}
+
+/* The emojis */
+
+ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+ul li {
+  font-size: xx-large;
+}
+
+.mood {
+  opacity: 85%;
+  transition: 0.5s ease-in-out;
+}
+
+.mood:hover {
+  opacity: 100%;
+  transform: translateY(-10px);
+}
+
+/* Journal entries page */
+
+.my-journal-section {
+  min-height: 80vh;
+  background: repeating-linear-gradient(45deg, #f9f9f9, transparent 20px);
+}
+
+.section-header {
+  width: 100%;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.journal-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  min-height: 60vh;
+}
+
+.entry-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 40%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 25px;
+}
+
+.full-width {
+  width: 45%;
+  text-align: center;
+  margin: 10px 0;
+  border-radius: 25px;
+}
+
+.full-width, .single-entry-card {
+  background:#ffffff;
+}
+
+.single-entry {
+  align-self: start;
+  margin: 35px 0;
+}
+
+.single-entry-card {
+  border-radius: 25px;
+  box-shadow: 5px 5px 19px black;
+  width: 30rem;
+  min-height: 25rem;
+  text-align: center;
+}
+
+.entry-card-header {
+  padding: 10px 0;
+}
+
+.entry-card-title {
+  margin: 10px 0;
+}
+
+.weak-text {
+  font-weight: 300;
+}
+
+.card-text {
+  margin: 10px 0;
+  text-align: justify;
+  padding: 10px 20px;
 }
 
 /*  */

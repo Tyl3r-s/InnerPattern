@@ -40,6 +40,7 @@ function Navigation() {
               <Nav.Link href="/Login" id="login">Login</Nav.Link>
               <Nav.Link href="/Signup">Signup</Nav.Link>
               <Nav.Link href="/CreateJournalEntry">Create Entry</Nav.Link>
+              <Nav.Link href="/JournalEntries">Your Entries</Nav.Link>
             </Nav>
           </Container>
         </Navbar>

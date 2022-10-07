@@ -15,6 +15,7 @@ import Login from './components/pages/Login';
 import Signup from './components/pages/Signup';
 import Profile from './components/pages/Profile';
 import CreateJournalEntry from './components/pages/CreateJournalEntry';
+import JournalEntries from './components/pages/JournalEntries';
 // import Success from './pages/Success'
 
 
@@ -62,6 +63,7 @@ function App() {
             <Route exact path="/Signup" component={Signup} />
             <Route exact path="/Profile" component={Profile} />
             <Route exact path="/CreateJournalEntry" component={CreateJournalEntry} />
+            <Route exact path="/JournalEntries" component={JournalEntries} />
             <Route component={NoMatch} />
           </Switch>
         
