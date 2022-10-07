@@ -75,7 +75,7 @@ const resolvers = {
         return entry;
         // ELSE STATEMENT FOR TESTING - TO BE REMOVED
       } else {
-        const entry = await Entry.create({args});
+        const entry = await Entry.create(args);
         await User.findOneAndUpdate(
           {
             email: args.email
@@ -91,6 +91,44 @@ const resolvers = {
         return entry;
       }
       throw new AuthenticationError('You need to be logged in!');
+    },
+    editEntry: async (parent, {entryId, title, entryText, moodRating, email }, context) => {
+      if (context.user) {
+        const entry = await Entry.findByIdAndUpdate( {_id: entryId},
+          {title, entryText, moodRating}, {new: true});
+        // const entry = await Entry.create({...args, email: context.user.email });
+        await User.findByIdAndUpdate(
+          {
+            _id: context.user._id
+          },
+          {
+            $push: { entries: entry._id}
+          },
+          {
+            new: true
+          }
+        );
+
+        return entry;
+        // ELSE STATEMENT FOR TESTING - TO BE REMOVED
+      } else {
+        const entry = await Entry.findByIdAndUpdate( {_id: entryId},
+          {title, entryText, moodRating, email}, {new: true});
+        // const entry = await Entry.create({...args, email: context.user.email });
+        await User.findByIdAndUpdate(
+          {
+            email: args.email
+          },
+          {
+            $push: { entries: entry._id}
+          },
+          {
+            new: true
+          }
+        );
+
+        return entry;
+      }
     }
   }
 };
