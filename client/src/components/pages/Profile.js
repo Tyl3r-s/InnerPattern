@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import Nav from "..";
-import Footer from "./Footer";
+import React from "react";
+import Navigation from "../pages/Navigation";
+import Footer from "../pages/Footer";
 import { Link } from "react-router-dom";
 import sampleImg from "../../assets/navlogo.png"
 
 function Profile (props) {
     return(
         <div>
-            <Nav />
+            <Navigation />
             <div className="flex-row">
                 <div className="card">
                     <img src={sampleImg} alt="placeholder" />
