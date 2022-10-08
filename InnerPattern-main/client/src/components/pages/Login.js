@@ -32,7 +32,7 @@ function Login(props) {
 
   return (
     <div>
-      <Navigation />
+      {/* <Navigation /> */}
       <main>
         <div className="login-form">
           <h4 className="login-header">Login</h4>

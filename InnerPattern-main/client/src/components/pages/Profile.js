@@ -2,7 +2,8 @@ import React from "react";
 import Navigation from "../pages/Navigation";
 import Footer from "../pages/Footer";
 import { Link } from "react-router-dom";
-import sampleImg from "../../assets/navlogo.png"
+import sampleImg from "../../assets/navlogo.png";
+import Auth from "../../utils/auth";
 
 function Profile (props) {
     return(
