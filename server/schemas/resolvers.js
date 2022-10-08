@@ -5,15 +5,6 @@ const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
   Query: {
-    users: async (parent, args) => {
-      // THIS QUERY FOR TESTING ONLY!!!!!
-        const users = await User.find();
-
-        return users;
-      // }
-
-      // throw new AuthenticationError('Not logged in');
-    },
     user: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
@@ -23,6 +14,11 @@ const resolvers = {
       }
 
       throw new AuthenticationError('Not logged in');
+    },
+    entries: async (parent, args) => {
+      const entries = await Entry.find();
+
+      return entries;
     }
   },
   Mutation: {
@@ -74,62 +70,63 @@ const resolvers = {
 
         return entry;
         // ELSE STATEMENT FOR TESTING - TO BE REMOVED
-      } else {
-        const entry = await Entry.create(args);
-        await User.findOneAndUpdate(
-          {
-            email: args.email
-          },
-          {
-            $push: { entries: entry._id}
-          },
-          {
-            new: true
-          }
-        );
+      } 
+      // else {
+      //   const entry = await Entry.create(args);
+      //   await User.findOneAndUpdate(
+      //     {
+      //       email: args.email
+      //     },
+      //     {
+      //       $push: { entries: entry._id}
+      //     },
+      //     {
+      //       new: true
+      //     }
+      //   );
 
-        return entry;
-      }
+      //   return entry;
+      // }
       throw new AuthenticationError('You need to be logged in!');
     },
-    editEntry: async (parent, {entryId, title, entryText, moodRating, email }, context) => {
-      if (context.user) {
-        const entry = await Entry.findByIdAndUpdate( {_id: entryId},
-          {title, entryText, moodRating}, {new: true});
-        // const entry = await Entry.create({...args, email: context.user.email });
-        await User.findByIdAndUpdate(
-          {
-            _id: context.user._id
-          },
-          {
-            $push: { entries: entry._id}
-          },
-          {
-            new: true
-          }
-        );
+    // editEntry: async (parent, {id, title, entryText, moodRating, email }, context) => {
+    //   if (context.user) {
+    //     const entry = await Entry.findByIdAndUpdate( {_id: id},
+    //       {title, entryText, moodRating}, {new: true});
+    //     // const entry = await Entry.create({...args, email: context.user.email });
+    //     await User.findByIdAndUpdate(
+    //       {
+    //         _id: context.user._id
+    //       },
+    //       {
+    //         $push: { entries: entry._id}
+    //       },
+    //       {
+    //         new: true
+    //       }
+    //     );
 
-        return entry;
-        // ELSE STATEMENT FOR TESTING - TO BE REMOVED
-      } else {
-        const entry = await Entry.findByIdAndUpdate( {_id: entryId},
-          {title, entryText, moodRating, email}, {new: true});
-        // const entry = await Entry.create({...args, email: context.user.email });
-        await User.findByIdAndUpdate(
-          {
-            email: args.email
-          },
-          {
-            $push: { entries: entry._id}
-          },
-          {
-            new: true
-          }
-        );
+    //     return entry;
+    //     // ELSE STATEMENT FOR TESTING - TO BE REMOVED
+    //   } else {
+    //     const entry = await Entry.findByIdAndUpdate( {_id: id},
+    //       {title, entryText, moodRating, email}, {new: true});
+    //     // const entry = await Entry.create({...args, email: context.user.email });
+    //     await User.findByIdAndUpdate(
+    //       {
+    //         email: args.email
+    //       },
+    //       {
+    //         $push: { entries: entry._id}
+    //       },
+    //       {
+    //         new: true
+    //       }
+    //     );
 
-        return entry;
-      }
-    }
+    //     return entry;
+    //   }
+    // }
   }
 };
 

@@ -23,8 +23,8 @@ type Entry {
   }
 
   type Query {
-    users: [User]
     user: User
+    entries: [Entry]
   }
 
   type Mutation {
@@ -32,7 +32,6 @@ type Entry {
     updateUser(firstName: String, lastName: String, email: String, password: String): User
     login(email: String!, password: String!): Auth
     addEntry(title: String!, entryText: String!, moodRating: String!, email: String!): Entry
-    editEntry(_id: ID!, title: String!, entryText: String!, moodRating: String!, email: String!): Entry
   }
 `;
 
