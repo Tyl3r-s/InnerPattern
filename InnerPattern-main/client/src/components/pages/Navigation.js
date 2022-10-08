@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 import navLogo from "../../assets/navlogo.png";
 
 import Auth from '../../utils/auth';
