@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const {Schema} = mongoose;
+const { Schema } = mongoose;
+const dateFormat = require('../utils/dateFormat');
 
 const entrySchema = new Schema({
     title: {
@@ -14,7 +15,12 @@ const entrySchema = new Schema({
     email: {
         type: String,
         required: true
-      },
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+        get: createdAtVal => dateFormat(createdAtVal)
+    },
     moodRating: {
         type: String,
         required: true
