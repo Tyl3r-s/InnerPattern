@@ -22,10 +22,13 @@ const Navigation = () => {
         </Container>
       ) : (
         <Container>
+          <Navbar.Brand href="/" as={Link} to='/' className="padding-none">
+            <img src={navLogo} id="brand-logo" alt="Brand logo" />
+          </Navbar.Brand>
           <Nav.Link as={Link} to='/Login' id="login">Login</Nav.Link>
           <Nav.Link as={Link} to='/Signup'>Signup</Nav.Link>
         </Container>
-        )
+      )
       }
     </Navbar>
   );

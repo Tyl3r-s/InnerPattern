@@ -7,7 +7,7 @@ import Card from "react-bootstrap/Card";
 const JournalEntries = () => {
   return (
     <>
-      {/* <Navigation /> */}
+      <Navigation />
       <main>
         <div className="my-journal-section">
           <div className="section-header">
