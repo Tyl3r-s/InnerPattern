@@ -1,14 +1,61 @@
-import React from "react";
+import React, {useState} from "react";
 import Navigation from "../pages/Navigation";
+import { useMutation } from "@apollo/client";
 import Footer from "../pages/Footer";
+import { ADD_ENTRY } from "../../utils/mutations";
+import Auth from "../../utils/auth";
 
 const CreateJournalEntry = () => {
+  const [errorMessage, setErrorMessage] = useState('');
+  const [formState, setFormState] = useState({title: "", entryText: "", moodRating: ""});
+  const {title, entryText, moodRating} = formState;
+
+  const [addEntry, {error}] = useMutation(ADD_ENTRY);
+
+  const handleChange = function(e) {
+    // console.dir(e.target);
+    if(e.target.ariaLabel === "mood emoji") {
+      console.log(e.target.textContent);
+      setFormState({...formState, ["moodRating"]: e.target.textContent});
+      return;
+    }
+    if(!e.target.value.length) {
+      setErrorMessage(`${e.target.name} cannot be empty.`)
+    } else {
+      setErrorMessage('');
+    }
+    if (!errorMessage) {
+      setFormState({...formState, [e.target.name]: e.target.value});
+    }
+    console.log(formState);
+  }
+
+  const handleSubmit = async function(event) {
+    event.preventDefault();
+    console.log(Auth.getProfile().data);
+    if (Auth.loggedIn()) {
+      try {
+        const {data} = await addEntry({
+          variables: {...formState, email: Auth.getProfile().data.email}
+        });
+      } catch (e) {
+        console.log(e);
+      }
+    } else {
+      console.log('not logged it');
+    }
+
+
+  }
+
   return (
     <div>
       <Navigation />
       <main>
         <div className="journal-form">
-          <form>
+          <form
+            onSubmit={handleSubmit}
+            >
             <div className="inputBox">
               <h4 className="journal-header" id="journal-header">
                 Create An Entry
@@ -18,17 +65,26 @@ const CreateJournalEntry = () => {
                 name="title"
                 required="required"
                 className="input1"
+                defaultValue={title}
+                onBlur={handleChange}
               />
               <span>Title:</span>
             </div>
             <div className="inputBox">
               <h4>Journal Content</h4>
-              <input name="entryText" type="text" required="required" className="inputBoxMessage"/>
+              <input 
+                name="entryText" 
+                type="text" 
+                required="required" 
+                className="inputBoxMessage"
+                defaultValue={entryText}
+                onBlur={handleChange}
+              />
               <span>Body:</span>
             </div>
             <div className="inputBoxBottom">
               <h4>My Mood</h4>
-              <ul className="moods">
+              <ul className="moods" id="moodRating" onClick={handleChange}>
                 <li className="mood" id="mood-1">
                   <span role="img" aria-label="mood emoji">😔</span>
                 </li>

@@ -22,3 +22,11 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_ENTRY = gql`
+  mutation addEntry($title: String!, $entryText: String!, $moodRating: String!, $email: String!) {
+    addEntry(title: $title, entryText: $entryText, moodRating: $moodRating, email: $email) {
+      _id
+    }
+  }
+`;

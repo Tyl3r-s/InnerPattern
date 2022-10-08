@@ -43,6 +43,7 @@ const resolvers = {
       // this is the addUser muatation that returns a token and a user - used in the signup form
       addUser: async (parent, args) => {
         const user = await User.create(args);
+        console.log(user);
         const token = signToken(user);
   
         return { token, user };
@@ -70,6 +71,7 @@ const resolvers = {
     //   return { token, user };
     // },
     addEntry: async (parent, args, context) => {
+      console.log(context.user);
       if (context.user) {
         const entry = await Entry.create({...args, email: context.user.email });
         await User.findByIdAndUpdate(
