@@ -19,57 +19,62 @@ const JournalEntries = () => {
                 <Card.Body>
                   <Card.Title>😁</Card.Title>
                   <Card.Text>Had a good day with the fam</Card.Text>
-                  <Button variant="primary">Check Entry</Button>
+                  <div className="inputBoxBtnContainer">
+                    <Button className="inputBoxBtn">Check Entry</Button>
+                  </div>
                 </Card.Body>
               </div>
               <div className="full-width">
                 <Card.Body>
                   <Card.Title>😁</Card.Title>
                   <Card.Text>Had a good day with the fam</Card.Text>
-                  <Button variant="primary">Check Entry</Button>
+                  <div className="inputBoxBtnContainer">
+                    <Button className="inputBoxBtn">Check Entry</Button>
+                  </div>
                 </Card.Body>
               </div>
               <div className="full-width">
                 <Card.Body>
                   <Card.Title>😁</Card.Title>
                   <Card.Text>Had a good day with the fam</Card.Text>
-                  <Button variant="primary">Check Entry</Button>
+                  <div className="inputBoxBtnContainer">
+                    <Button className="inputBoxBtn">Check Entry</Button>
+                  </div>
                 </Card.Body>
               </div>
               <div className="full-width">
                 <Card.Body>
                   <Card.Title>😁</Card.Title>
                   <Card.Text>Had a good day with the fam</Card.Text>
-                  <Button variant="primary">Check Entry</Button>
+                  <div className="inputBoxBtnContainer">
+                    <Button className="inputBoxBtn">Check Entry</Button>
+                  </div>
                 </Card.Body>
               </div>
               <div className="full-width">
                 <Card.Body>
                   <Card.Title>😁</Card.Title>
                   <Card.Text>Had a good day with the fam</Card.Text>
-                  <Button variant="primary">Check Entry</Button>
+                  <div className="inputBoxBtnContainer">
+                    <Button className="inputBoxBtn">Check Entry</Button>
+                  </div>
                 </Card.Body>
               </div>
               <div className="full-width">
                 <Card.Body>
                   <Card.Title>😁</Card.Title>
                   <Card.Text>Had a good day with the fam</Card.Text>
-                  <Button variant="primary">Check Entry</Button>
-                </Card.Body>
-              </div>
-              <div className="full-width">
-                <Card.Body>
-                  <Card.Title>😁</Card.Title>
-                  <Card.Text>Had a good day with the fam</Card.Text>
-                  <Button variant="primary">Check Entry</Button>
+                  <div className="inputBoxBtnContainer">
+                    <Button className="inputBoxBtn">Check Entry</Button>
+                  </div>
                 </Card.Body>
               </div>
             </div>
             <div className="single-entry">
-              <div
-                className="single-entry-card"
-              >
-                <Card.Header className="entry-card-header">Had a good day with the fam</Card.Header>
+              <div className="single-entry-card">
+                <Card.Header className="entry-card-header">
+                  Had a good day with the fam
+                </Card.Header>
                 <hr></hr>
                 <Card.Body>
                   <Card.Title className="entry-card-title">
@@ -78,7 +83,7 @@ const JournalEntries = () => {
                     <span className="weak-text">3:35 on Jan 7 2022</span>
                   </Card.Title>
                   <hr></hr>
-                  <Card.Text>
+                  <Card.Text id="single-entry-card-text">
                     Some quick example text to build on the card title and make
                     up the bulk of the card's content. Some quick example text
                     to build on the card title and make up the bulk of the

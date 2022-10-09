@@ -17,7 +17,7 @@ const Home = () => {
             better, become more mindful, and in the process modulate the thought
             patterns that are generating our suffering.{" "}
           </p>
-          <div className="LandingBtn">
+          <div className="inputBoxBtn">
             <Link
               to="/SignUp"
               style={{ textDecoration: "none", color: "white" }}
