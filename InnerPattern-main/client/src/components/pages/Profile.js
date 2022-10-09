@@ -11,7 +11,6 @@ function Profile (props) {
             <Navigation />
             <div className="flex-row">
                 <div className="card">
-                    <img src={sampleImg} alt="placeholder" />
                     <h2>Your Name</h2>
                     <span>youremail@test.com</span>
                 </div>
@@ -19,19 +18,13 @@ function Profile (props) {
                     <div>
                         {/* TODO: add path to Journal */}
                         <Link to="/">
-                            Journal
+                            Create an Entry
                         </Link>
                     </div>
                     <div className="card">
                         {/* TODO: add path to Behaviour activation */}
                         <Link to="/">
-                            Behaviour Activation
-                        </Link>
-                    </div>
-                    <div>
-                        {/* TODO: add path to goal tracker */}
-                        <Link to="/">
-                            Goal Tracker
+                            Your Entries
                         </Link>
                     </div>
                 </div>
