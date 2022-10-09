@@ -16,18 +16,11 @@ const resolvers = {
         }
         throw new AuthenticationError("Not logged in");
       },
-    },
-    Query: {
-      // this queries me - the logged in user
-      me: async (parent, args, context) => {
-        if (context.user) {
-          const userData = await User.findOne({ _id: context.user._id }).select(
-            "-__v -password"
-          );
-          return userData;
-        }
-        throw new AuthenticationError("Not logged in");
-      },
+      entries: async (parent, args) => {
+        const entries = await Entry.find();
+  
+        return entries;
+      }
     },
     // mutations start here
     Mutation: {
@@ -76,9 +69,30 @@ const resolvers = {
 
     //   return { token, user };
     // },
-    // addEntry: async (parent, args, context) => {
+    addEntry: async (parent, args, context) => {
+      if (context.user) {
+        const entry = await Entry.create({...args, email: context.user.email });
+        await User.findByIdAndUpdate(
+          {
+            _id: context.user._id
+          },
+          {
+            $push: { entries: entry._id}
+          },
+          {
+            new: true
+          }
+        );
+
+        return entry;
+      }
+      throw new AuthenticationError('You need to be looged in!');
+    },
+    // editEntry: async (parent, {id, title, entryText, moodRating, email }, context) => {
     //   if (context.user) {
-    //     const entry = await Entry.create({...args, username: context.user.username });
+    //     const entry = await Entry.findByIdAndUpdate( {_id: id},
+    //       {title, entryText, moodRating}, {new: true});
+    //     // const entry = await Entry.create({...args, email: context.user.email });
     //     await User.findByIdAndUpdate(
     //       {
     //         _id: context.user._id
@@ -92,8 +106,25 @@ const resolvers = {
     //     );
 
     //     return entry;
+    //     // ELSE STATEMENT FOR TESTING - TO BE REMOVED
+    //   } else {
+    //     const entry = await Entry.findByIdAndUpdate( {_id: id},
+    //       {title, entryText, moodRating, email}, {new: true});
+    //     // const entry = await Entry.create({...args, email: context.user.email });
+    //     await User.findByIdAndUpdate(
+    //       {
+    //         email: args.email
+    //       },
+    //       {
+    //         $push: { entries: entry._id}
+    //       },
+    //       {
+    //         new: true
+    //       }
+    //     );
+
+    //     return entry;
     //   }
-    //   throw new AuthenticationError('You need to be looged in!');
     // }
   }
 };

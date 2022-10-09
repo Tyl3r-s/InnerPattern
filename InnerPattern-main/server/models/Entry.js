@@ -27,6 +27,6 @@ const entrySchema = new Schema({
     }
 });
 
-const Entry = mongoose.model('entry', entrySchema);
+const Entry = mongoose.model('Entry', entrySchema);
 
 module.exports = Entry;
