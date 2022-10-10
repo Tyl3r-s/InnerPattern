@@ -3,19 +3,26 @@ import Navigation from "../pages/Navigation";
 import Footer from "../pages/Footer";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import {QUERY_ENTRIES} from "../../utils/queries";
+import { QUERY_ENTRIES } from "../../utils/queries";
 import { useQuery } from "@apollo/client";
+import Auth from "../../utils/auth";
 
 const JournalEntries = () => {
   // const [entries, setEntries] = useState([{title:'', entryText: '', moodRating:''}]);
 
-  const {loading, data} = useQuery(QUERY_ENTRIES);
+  console.log(Auth.getProfile().data);
+  // const email = Auth.getProfile().data.email;
+  // for testing
+  const email = "test@test.com";
+  const { loading, data } = useQuery(QUERY_ENTRIES, {
+    variables: { email }
+  });
   // const {loading, error, data} = useQuery(QUERY_ENTRIES);
 
   if (loading) return 'Loading...';
   // if (error) return `Error! ${error.message}`;
-  
-  console.log(data);
+
+  console.log(data.entries);
 
   return (
     <>
@@ -27,55 +34,17 @@ const JournalEntries = () => {
           </div>
           <div className="journal-group">
             <div className="entry-group">
-              <div className="full-width">
-                <Card.Body>
-                  <Card.Title>😁</Card.Title>
-                  <Card.Text>Had a good day with the fam</Card.Text>
-                  <Button variant="primary">Check Entry</Button>
-                </Card.Body>
-              </div>
-              <div className="full-width">
-                <Card.Body>
-                  <Card.Title>😁</Card.Title>
-                  <Card.Text>Had a good day with the fam</Card.Text>
-                  <Button variant="primary">Check Entry</Button>
-                </Card.Body>
-              </div>
-              <div className="full-width">
-                <Card.Body>
-                  <Card.Title>😁</Card.Title>
-                  <Card.Text>Had a good day with the fam</Card.Text>
-                  <Button variant="primary">Check Entry</Button>
-                </Card.Body>
-              </div>
-              <div className="full-width">
-                <Card.Body>
-                  <Card.Title>😁</Card.Title>
-                  <Card.Text>Had a good day with the fam</Card.Text>
-                  <Button variant="primary">Check Entry</Button>
-                </Card.Body>
-              </div>
-              <div className="full-width">
-                <Card.Body>
-                  <Card.Title>😁</Card.Title>
-                  <Card.Text>Had a good day with the fam</Card.Text>
-                  <Button variant="primary">Check Entry</Button>
-                </Card.Body>
-              </div>
-              <div className="full-width">
-                <Card.Body>
-                  <Card.Title>😁</Card.Title>
-                  <Card.Text>Had a good day with the fam</Card.Text>
-                  <Button variant="primary">Check Entry</Button>
-                </Card.Body>
-              </div>
-              <div className="full-width">
-                <Card.Body>
-                  <Card.Title>😁</Card.Title>
-                  <Card.Text>Had a good day with the fam</Card.Text>
-                  <Button variant="primary">Check Entry</Button>
-                </Card.Body>
-              </div>
+              {data.entries.map((entry) => (
+                <div className="full-width" key={entry._id}>
+                  <Card.Body>
+                    <Card.Title>{entry.title}</Card.Title>
+                    <Card.Subtitle>{entry.moodRating}</Card.Subtitle>
+                    <Card.Text>{entry.entryText}</Card.Text>
+                    <Button variant="primary">Check Entry</Button>
+                  </Card.Body>
+                </div>
+              ))}
+              
             </div>
             <div className="single-entry">
               <div

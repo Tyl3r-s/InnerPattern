@@ -19,12 +19,12 @@ export const QUERY_CHECKOUT = gql`
 `;
 
 export const QUERY_ENTRIES = gql`
-query entries {
-  entries {
+query entries ($email: String!) {
+  entries (email: $email) {
+    _id
     title
     entryText
     moodRating
-    email
   }
 }
 `;

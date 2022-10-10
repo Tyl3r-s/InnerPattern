@@ -26,7 +26,7 @@ type Entry {
 
   type Query {
     me: User
-    entries: [Entry]
+    entries(email: String): [Entry]
   }
 
   type Mutation {

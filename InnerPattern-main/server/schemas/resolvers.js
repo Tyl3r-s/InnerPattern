@@ -1,6 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User } = require('../models');
-const Entry = require('../models/Entry');
+const { User, Entry } = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
@@ -16,11 +15,12 @@ const resolvers = {
         }
         throw new AuthenticationError("Not logged in");
       },
-      entries: async (parent, args) => {
-        const entries = await Entry.find();
+      entries: async (parent, {email}, context) => {
+        
+        const entries = Entry.find({email});
   
         return entries;
-      }
+      },
     },
     // mutations start here
     Mutation: {
