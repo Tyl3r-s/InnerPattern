@@ -27,8 +27,8 @@ type Entry {
   type Query {
     me: User
     users: [User]
-    user:(username: String!): User
-    entries: (username: String): [Entry]
+    user(username: String!): User
+    entries(username: String): [Entry]
     entry(_id: ID!): Entry
   }
 
@@ -38,9 +38,5 @@ type Entry {
     addEntry(title: String!, entryText: String!, moodRating: String!, email: String!): Entry
   }
 `;
-
-// type Mutation 
-// updateUser(firstName: String!, lastName: String!, email: String!, password: String!): User
-// addEntry(title: String!, entryText: String!, moodRating: String!): Auth
 
 module.exports = typeDefs;

@@ -20,10 +20,10 @@ const resolvers = {
       const params = username ? { username } : {};
       return Entry.find(params).sort({ createdAt: -1 });
     },
-  },
-  entry: async (parent, { _id }) => {
-    return Entry.findOne({ _id });
-  },
+    },
+    Entry: async (parent, { _id }) => {
+      return Entry.findOne({ _id });
+    },
     // mutations start here
     Mutation: {
     // This is the login user mutation with authentication and returns a token and User
