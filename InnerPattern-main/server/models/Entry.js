@@ -12,10 +12,6 @@ const entrySchema = new Schema({
         required: true,
         minlength: 10
     },
-    email: {
-        type: String,
-        required: true
-    },
     createdAt: {
         type: Date,
         default: Date.now,

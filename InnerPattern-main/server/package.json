@@ -6,16 +6,18 @@
   "scripts": {
     "start": "node server.js",
     "watch": "nodemon",
-    "seed": "node config/seeds.js"
+    "seed": "node seeders/seeds.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "apollo-server-express": "^2.21.1",
+    "apollo-server-express": "^2.26.0",
     "bcrypt": "^5.0.1",
     "express": "^4.17.1",
-    "graphql": "^15.5.0",
+    "express-graphql": "^0.12.0",
+    "faker": "^6.6.6",
+    "graphql": "^15.8.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.0",
     "stripe": "^8.138.0"

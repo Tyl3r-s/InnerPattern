@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { ApolloProvider } from '@apollo/react-hooks';
-// import {
-//   ApolloClient,
-//   InMemoryCache,
-//   ApolloProvider,
-//   createHttpLink,
-// } from '@apollo/client';
+// import { ApolloProvider } from '@apollo/react-hooks';
 // import { setContext } from '@apollo/client/link/context';
+import {
+  // ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
 import ApolloClient from 'apollo-boost';
 import Home from './components/pages/Home';
 import NoMatch from './components/pages/NoMatch';
@@ -18,8 +18,13 @@ import CreateJournalEntry from './components/pages/CreateJournalEntry';
 import JournalEntries from './components/pages/JournalEntries';
 // import Success from './pages/Success'
 
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
 
 const client = new ApolloClient({
+  link: httpLink,
+  cache: new InMemoryCache(),
   request: (operation) => {
     const token = localStorage.getItem('id_token');
     operation.setContext({
@@ -30,10 +35,6 @@ const client = new ApolloClient({
   },
   uri: '/graphql',
 });
-
-// const httpLink = createHttpLink({
-//   uri: '/graphql',
-// });
 
 // const authLink = setContext((_, { headers }) => {
 //   const token = localStorage.getItem('id_token');
@@ -46,7 +47,7 @@ const client = new ApolloClient({
 // });
 
 // const client = new ApolloClient({
-//   link: authLink.concat(httpLink),
+//   link: httpLink,
 //   cache: new InMemoryCache(),
 // });
 
