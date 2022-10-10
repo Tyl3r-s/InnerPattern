@@ -8,7 +8,8 @@ import { ApolloProvider } from '@apollo/react-hooks';
 //   createHttpLink,
 // } from '@apollo/client';
 // import { setContext } from '@apollo/client/link/context';
-import ApolloClient from 'apollo-boost';
+// import ApolloClient from 'apollo-boost';
+import { ApolloClient, InMemoryCache } from '@apollo/client';
 import Home from './components/pages/Home';
 import NoMatch from './components/pages/NoMatch';
 import Login from './components/pages/Login';
@@ -29,6 +30,7 @@ const client = new ApolloClient({
     });
   },
   uri: '/graphql',
+  cache: new InMemoryCache()
 });
 
 // const httpLink = createHttpLink({

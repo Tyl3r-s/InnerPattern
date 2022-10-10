@@ -18,8 +18,8 @@ function Profile (props) {
                 <div>
                     <div>
                         {/* TODO: add path to Journal */}
-                        <Link to="/">
-                            Journal
+                        <Link to="/JournalEntries">
+                            Journal Entries
                         </Link>
                     </div>
                     <div className="card">

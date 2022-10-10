@@ -3,8 +3,20 @@ import Navigation from "../pages/Navigation";
 import Footer from "../pages/Footer";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import {QUERY_ENTRIES} from "../../utils/queries";
+import { useQuery } from "@apollo/client";
 
 const JournalEntries = () => {
+  // const [entries, setEntries] = useState([{title:'', entryText: '', moodRating:''}]);
+
+  const {loading, data} = useQuery(QUERY_ENTRIES);
+  // const {loading, error, data} = useQuery(QUERY_ENTRIES);
+
+  if (loading) return 'Loading...';
+  // if (error) return `Error! ${error.message}`;
+  
+  console.log(data);
+
   return (
     <>
       <Navigation />

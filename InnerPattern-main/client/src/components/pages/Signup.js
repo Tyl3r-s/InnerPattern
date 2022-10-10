@@ -16,17 +16,24 @@ function Signup(props) {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    const mutationResponse = await addUser({
-      variables: {
-        email: formState.email,
-        password: formState.password,
-        firstName: formState.firstName,
-        lastName: formState.lastName,
-      },
-    });
-    console.log(mutationResponse);
-    const token = mutationResponse.data.addUser.token;
-    Auth.login(token);
+    
+
+    try {      
+      const mutationResponse = await addUser({
+        variables: {
+          email: formState.email,
+          password: formState.password,
+          firstName: formState.firstName,
+          lastName: formState.lastName,
+        },
+      });
+      console.log(mutationResponse);
+      const token = mutationResponse.data.addUser.token;
+      Auth.login(token);
+    } catch (e) {
+      console.log(e);
+      alert('Email address already in database! Use a different email address.')
+    }
   };
 
   const handleChange = (event) => {
