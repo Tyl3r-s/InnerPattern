@@ -26,7 +26,10 @@ type Entry {
 
   type Query {
     me: User
-    entries: [Entry]
+    users: [User]
+    user:(username: String!): User
+    entries: (username: String): [Entry]
+    entry(_id: ID!): Entry
   }
 
   type Mutation {

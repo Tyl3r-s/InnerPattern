@@ -9,18 +9,17 @@ const resolvers = {
     // this queries me - the logged in user
     me: async (parent, args, context) => {
       if (context.user) {
-        const userData = await User.findOne({ _id: context.user._id }).select(
-          "-__v -password"
-        );
+        const userData = await User.findOne({ _id: context.user._id })
+        .select('-__v -password')
+        .populate('entries');
         return userData;
       }
       throw new AuthenticationError("Not logged in");
     },
-    entries: async (parent, args) => {
-      const entries = await Entry.find();
-
-      return entries;
-    }
+    entries: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return Entry.find(params).sort({ createdAt: -1 });
+    },
   },
   entry: async (parent, { _id }) => {
     return Entry.findOne({ _id });
@@ -32,12 +31,12 @@ const resolvers = {
       const user = await User.findOne({ email });
 
       if (!user) {
-        throw new AuthenticationError("Invalid credentials");
+        throw new AuthenticationError("User not found");
       }
 
       const correctPassword = await user.isCorrectPassword(password);
       if (!correctPassword) {
-        throw new AuthenticationError("Invalid credentials");
+        throw new AuthenticationError("Password is incorrect");
       }
       const token = signToken(user);
 
