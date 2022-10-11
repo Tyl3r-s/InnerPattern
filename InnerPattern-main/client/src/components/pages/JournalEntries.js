@@ -8,12 +8,15 @@ import { useQuery } from "@apollo/client";
 import Auth from "../../utils/auth";
 
 const JournalEntries = () => {
-  // const [entries, setEntries] = useState([{title:'', entryText: '', moodRating:''}]);
+  let email = '';
 
-  console.log(Auth.getProfile().data);
-  const email = Auth.getProfile().data.email;
-  // for testing
-  // const email = "test@test.com";
+  try {
+    email = Auth.getProfile().data.email;
+    // for testing
+    // const email = "test@test.com";
+  } catch (e) {
+    console.log('Not logged');
+  }
   const { loading, data } = useQuery(QUERY_ENTRIES, {
     variables: { email }
   });
@@ -23,6 +26,13 @@ const JournalEntries = () => {
   // if (error) return `Error! ${error.message}`;
 
   const entries = data.entries;
+
+
+  // if not loggedIn, redirect
+  if (!Auth.loggedIn()) {
+    window.location.assign('/Login');
+    return;
+  }
 
   return (
     <>
@@ -38,13 +48,16 @@ const JournalEntries = () => {
                 <div className="full-width" key={entry._id}>
                   <Card.Body>
                     <Card.Title>{entry.title}</Card.Title>
-                    <Card.Subtitle>{entry.moodRating}</Card.Subtitle>
+                    <Card.Subtitle><span role="img" aria-label="mood rating">
+                      {entry.moodRating}
+                    </span>
+                    </Card.Subtitle>
                     <Card.Text>{entry.entryText}</Card.Text>
                     <Button variant="primary">Check Entry</Button>
                   </Card.Body>
                 </div>
               ))}
-              
+
             </div>
             <div className="single-entry">
               <div className="single-entry-card">

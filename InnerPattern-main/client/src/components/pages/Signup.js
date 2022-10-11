@@ -6,6 +6,7 @@ import Navigation from "../pages/Navigation";
 import Footer from "../pages/Footer";
 
 function Signup(props) {
+
   const [formState, setFormState] = useState({
     email: "",
     password: "",
@@ -16,8 +17,6 @@ function Signup(props) {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    
-
     try {      
       const mutationResponse = await addUser({
         variables: {
@@ -43,6 +42,11 @@ function Signup(props) {
       [name]: value,
     });
   };
+  // if not loggedIn, redirect
+  if (Auth.loggedIn()) {
+    window.location.assign('/Profile');
+    return;
+  }
 
   return (
     <div>
