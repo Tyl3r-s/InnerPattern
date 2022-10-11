@@ -14,11 +14,10 @@ function Navigation() {
               <img src={navLogo} id="brand-logo" alt="Brand logo" />
             </Navbar.Brand>
             <Nav className="me-auto">
+              <Nav.Link href="/Profile">Account</Nav.Link>
               <Nav.Link href="/Login" onClick={() => Auth.logout()}>
                 Logout
               </Nav.Link>
-              <Nav.Link href="/CreateJournalEntry">Create An Entry</Nav.Link>
-              <Nav.Link href="/JournalEntries">Your Entries</Nav.Link>
             </Nav>
           </Container>
         </Navbar>
