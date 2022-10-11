@@ -3,6 +3,7 @@ import Navigation from "../pages/Navigation";
 import Footer from "../pages/Footer";
 import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
+import ProfileLogo from "../../assets/Profile1.png"
 
 function Profile (props) {
 // if not loggedIn, redirect
@@ -11,10 +12,11 @@ function Profile (props) {
     return;
   }
     return(
-        <div>
+        <container className="bodyContainer">
             <Navigation />
             <div className="flex-row">
                 <div className="card">
+                    <img src={ProfileLogo} className="profileLogo"></img>
                     <h2>Your Name</h2>
                     <span>youremail@test.com</span>
                 </div>
@@ -27,14 +29,14 @@ function Profile (props) {
                     </div>
                     <div className="card">
                         {/* TODO: add path to Behaviour activation */}
-                        <Link to="/">
-                            Your Entries
+                        <Link to="/CreateJournalEntry">
+                            Create Entry
                         </Link>
                     </div>
                 </div>
             </div>
             <Footer />
-        </div>
+        </container>
     )
 };
 

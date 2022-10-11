@@ -106,6 +106,10 @@ header a {
   padding: 0;
 }
 
+.bodyContainer {
+  height: 80vh;
+}
+
 .LandingContainer {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(./assets/LandingBG.jpg);
@@ -446,9 +450,13 @@ footer {
   background: var(--primary);
   color: #ffffff;
   justify-content: center;
-  height: 5rem;
+  height: 10vh;
   padding: 20px;
   width: 100%;
+}
+
+.navClass {
+  height: 10vh;
 }
 
 .flex-row {

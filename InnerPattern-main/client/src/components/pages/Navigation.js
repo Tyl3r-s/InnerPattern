@@ -8,7 +8,7 @@ function Navigation() {
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-        <Navbar bg="dark">
+        <Navbar className="navClass" bg="dark">
           <Container>
             <Navbar.Brand href="/" className="padding-none">
               <img src={navLogo} id="brand-logo" alt="Brand logo" />

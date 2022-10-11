@@ -49,7 +49,7 @@ function Signup(props) {
   }
 
   return (
-    <div>
+    <container>
       <Navigation />
       <main>
         <div className="signup-form">
@@ -101,7 +101,7 @@ function Signup(props) {
         </div>
       </main>
       <Footer />
-    </div>
+    </container>
   );
 }
 
