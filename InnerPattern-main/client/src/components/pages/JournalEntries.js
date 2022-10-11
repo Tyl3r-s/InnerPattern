@@ -11,9 +11,9 @@ const JournalEntries = () => {
   // const [entries, setEntries] = useState([{title:'', entryText: '', moodRating:''}]);
 
   console.log(Auth.getProfile().data);
-  // const email = Auth.getProfile().data.email;
+  const email = Auth.getProfile().data.email;
   // for testing
-  const email = "test@test.com";
+  // const email = "test@test.com";
   const { loading, data } = useQuery(QUERY_ENTRIES, {
     variables: { email }
   });
@@ -22,7 +22,7 @@ const JournalEntries = () => {
   if (loading) return 'Loading...';
   // if (error) return `Error! ${error.message}`;
 
-  console.log(data.entries);
+  const entries = data.entries;
 
   return (
     <>
@@ -34,7 +34,7 @@ const JournalEntries = () => {
           </div>
           <div className="journal-group">
             <div className="entry-group">
-              {data.entries.map((entry) => (
+              {entries.map((entry) => (
                 <div className="full-width" key={entry._id}>
                   <Card.Body>
                     <Card.Title>{entry.title}</Card.Title>
