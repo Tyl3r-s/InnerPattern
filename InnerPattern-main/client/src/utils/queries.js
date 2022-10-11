@@ -14,11 +14,10 @@ export const QUERY_USER = gql`
 export const QUERY_ENTRIES = gql`
   query entries($username: String) {
     entries(username: $username) {
-      _id
+
       title
       entryText
-      createdAt
-      moodRating
+
     }
   }
 `;
