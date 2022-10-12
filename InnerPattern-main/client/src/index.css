@@ -95,6 +95,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
+  min-height: 13vh;
 }
 
 header a {
@@ -419,9 +420,23 @@ ul li {
 .single-entry-card {
   border-radius: 25px;
   box-shadow: 5px 5px 19px black;
-  width: 30rem;
+  width: 100%;
   min-height: 25rem;
   text-align: center;
+}
+
+.journal-card-title {
+  padding: 10px;
+}
+
+.journal-btn-group, .single-entry-btn-group {
+  padding: 20px;
+}
+
+.check-entry,
+.edit,
+.delete {
+  margin: 5px;
 }
 
 .entry-card-header {
@@ -444,6 +459,12 @@ ul li {
 
 /*  */
 
+.profile-section {
+  min-height: 80vh;
+}
+
+/*  */
+
 footer {
   display: flex;
   align-items: center;
@@ -453,6 +474,8 @@ footer {
   height: 10vh;
   padding: 20px;
   width: 100%;
+  margin-top: 25px;
+  position: absolute;
 }
 
 .navClass {
@@ -522,6 +545,10 @@ footer {
 }
 
 @media screen and (max-width: 768px) {
+  header {
+    min-height: 10vh;
+  }
+
   .card {
     width: 100%;
   }
@@ -577,8 +604,12 @@ footer {
     text-align: center;
   }
 
+  .single-entry {
+    width: 100%;
+  }
+
   .single-entry-card {
-    width: 85vw;
+    width: 100%;
   }
 
   #single-entry-card-text {

@@ -8,29 +8,28 @@ import { useQuery } from "@apollo/client";
 import Auth from "../../utils/auth";
 
 const JournalEntries = () => {
-  let email = '';
+  let email = "";
 
   try {
     email = Auth.getProfile().data.email;
     // for testing
     // const email = "test@test.com";
   } catch (e) {
-    console.log('Not logged');
+    console.log("Not logged");
   }
   const { loading, data } = useQuery(QUERY_ENTRIES, {
-    variables: { email }
+    variables: { email },
   });
   // const {loading, error, data} = useQuery(QUERY_ENTRIES);
 
-  if (loading) return 'Loading...';
+  if (loading) return "Loading...";
   // if (error) return `Error! ${error.message}`;
 
   const entries = data.entries;
 
-
   // if not loggedIn, redirect
   if (!Auth.loggedIn()) {
-    window.location.assign('/Login');
+    window.location.assign("/Login");
     return;
   }
 
@@ -48,19 +47,29 @@ const JournalEntries = () => {
                 {entries.map((entry) => (
                   <div className="full-width" key={entry._id}>
                     <Card.Body>
-                      <Card.Title>{entry.title}</Card.Title>
-                      <Card.Subtitle><span role="img" aria-label="mood rating">
-                        {entry.moodRating}
-                      </span>
+                      <Card.Title className="journal-card-title">
+                        {entry.title}
+                      </Card.Title>
+                      <Card.Subtitle>
+                        <span role="img" aria-label="mood rating">
+                          {entry.moodRating}
+                        </span>
                       </Card.Subtitle>
                       <Card.Text>{entry.entryText}</Card.Text>
-                      <Button variant="primary">Check Entry</Button>
-                      <Button variant="primary">Edit</Button>
-                      <Button variant="primary">Delete</Button>
+                      <div className="journal-btn-group">
+                        <Button variant="primary" className="check-entry">
+                          Check Entry
+                        </Button>
+                        <Button variant="primary" className="edit">
+                          Edit
+                        </Button>
+                        <Button variant="primary" className="delete">
+                          Delete
+                        </Button>
+                      </div>
                     </Card.Body>
                   </div>
                 ))}
-
               </div>
               <div className="single-entry">
                 <div className="single-entry-card">
@@ -76,14 +85,16 @@ const JournalEntries = () => {
                     </Card.Title>
                     <hr></hr>
                     <Card.Text id="single-entry-card-text">
-                      Some quick example text to build on the card title and make
-                      up the bulk of the card's content. Some quick example text
-                      to build on the card title and make up the bulk of the
-                      card's content. Some quick example text to build on the card
-                      title and make up the bulk of the card's content.
+                      Some quick example text to build on the card title and
+                      make up the bulk of the card's content. Some quick example
+                      text to build on the card title and make up the bulk of
+                      the card's content. Some quick example text to build on
+                      the card title and make up the bulk of the card's content.
                     </Card.Text>
-                    <Button variant="primary">Edit</Button>
-                    <Button variant="primary">Delete</Button>
+                    <div className="single-entry-btn-group">
+                      <Button variant="primary" className="edit">Edit</Button>
+                      <Button variant="primary" className="delete">Delete</Button>
+                    </div>
                   </Card.Body>
                 </div>
               </div>
