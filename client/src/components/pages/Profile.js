@@ -32,7 +32,6 @@ function Profile(props) {
     }
     return (
         <div className="bodyContainer">
-            <Navigation />
             <div className="flex-row profile-form">
                 <div className="card profilePic">
                     <img src={ProfileLogo} className="profileLogo"></img>
@@ -52,7 +51,6 @@ function Profile(props) {
                     </div>
                 </div>
             </div>
-            <Footer />
         </div>
     )
 };

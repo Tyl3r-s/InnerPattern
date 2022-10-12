@@ -32,7 +32,6 @@ function Login(props) {
 
   return (
     <div>
-      <Navigation />
       <main>
         <div className="login-form">
           <h4 className="login-header">Login</h4>
@@ -64,7 +63,7 @@ function Login(props) {
             ) : null}
             <div className="inputBoxBtnContainer">
               <button type="submit" className="inputBoxBtn">
-                Submit
+                Login
               </button>
             </div>
             <p>
@@ -73,7 +72,6 @@ function Login(props) {
           </form>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }
