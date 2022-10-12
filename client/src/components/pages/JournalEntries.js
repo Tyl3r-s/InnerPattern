@@ -34,24 +34,34 @@ const JournalEntries = () => {
 
   }
 
+  // handleEdit event function
+  const handleEdit = async function(index) {
+    // event.preventDefault();
+    console.log(index);
+    console.log(entries[index]);
+    // return(
+    //   <>
+    //     <
+    //   </>
+    // )
+
+  }
+
   let email = '';
 
   try {
     email = Auth.getProfile().data.email;
-    // for testing
-    // const email = "test@test.com";
   } catch (e) {
     console.log("Not logged");
   }
   const { loading, data } = useQuery(QUERY_ENTRIES, {
     variables: { email },
   });
-  // const {loading, error, data} = useQuery(QUERY_ENTRIES);
 
   if (loading) return "Loading...";
-  // if (error) return `Error! ${error.message}`;
 
   const entries = data.entries;
+
 
   // if not loggedIn, redirect
   if (!Auth.loggedIn()) {
@@ -70,7 +80,7 @@ const JournalEntries = () => {
             </div>
             <div className="journal-group">
               <div className="entry-group">
-                {entries.map((entry) => (
+                {entries.map((entry, index) => (
                   <div className="full-width" key={entry._id}>
                     <Card.Body>
                       <Card.Title className="journal-card-title">
@@ -86,7 +96,7 @@ const JournalEntries = () => {
                         <Button variant="primary" className="check-entry">
                           Check Entry
                         </Button>
-                        <Button variant="primary" className="edit">
+                        <Button onClick={() => handleEdit(index)} variant="primary" className="edit">
                           Edit
                         </Button>
                         <Button onClick={handleDelete} variant="primary" className="delete">
