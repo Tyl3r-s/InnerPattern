@@ -4,10 +4,35 @@ import Footer from "../pages/Footer";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { QUERY_ENTRIES } from "../../utils/queries";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
+import { DELETE_ENTRY } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 
 const JournalEntries = () => {
+
+  const [deleteEntry, {error}] = useMutation(DELETE_ENTRY);
+
+  const handleDelete = async function(event) {
+    event.preventDefault();
+    const id = event.target.parentNode.id
+    // console.log(Auth.getProfile().data);
+    if (Auth.loggedIn()) {
+      try {
+        const {data} = await deleteEntry({
+          variables: { id }
+        });
+      } catch (e) {
+        console.log(e);
+      }
+    } else {
+      console.log('not logged it');
+      window.location.assign('/Login');
+    }
+
+    // window.location.reload();
+
+  }
+
   let email = '';
 
   try {
@@ -35,7 +60,7 @@ const JournalEntries = () => {
   }
 
   return (
-    <container>
+    <div>
       <>
         <Navigation />
         <main>
@@ -47,16 +72,16 @@ const JournalEntries = () => {
               <div className="entry-group">
                 {entries.map((entry) => (
                   <div className="full-width" key={entry._id}>
-                    <Card.Body>
+                    <Card.Body id={entry._id}>
                       <Card.Title>{entry.title}</Card.Title>
                       <Card.Subtitle><span role="img" aria-label="mood rating">
                         {entry.moodRating}
                       </span>
                       </Card.Subtitle>
-                      <Card.Text>{entry.entryText}</Card.Text>
+                      <Card.Text>{entry._id}</Card.Text>
                       <Button variant="primary">Check Entry</Button>
                       <Button variant="primary">Edit</Button>
-                      <Button variant="primary">Delete</Button>
+                      <Button onClick={() => deleteEntry(entry.id)} variant="primary">Delete</Button>
                     </Card.Body>
                   </div>
                 ))}
@@ -92,7 +117,7 @@ const JournalEntries = () => {
         </main>
         <Footer />
       </>
-    </container>
+    </div>
   );
 };
 

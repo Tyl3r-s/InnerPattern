@@ -31,7 +31,7 @@ function Login(props) {
   };
 
   return (
-    <container>
+    <div>
       <Navigation />
       <main>
         <div className="login-form">
@@ -74,7 +74,7 @@ function Login(props) {
         </div>
       </main>
       <Footer />
-    </container>
+    </div>
   );
 }
 

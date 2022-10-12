@@ -3,16 +3,35 @@ import Navigation from "../pages/Navigation";
 import Footer from "../pages/Footer";
 import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
-import ProfileLogo from "../../assets/Profile1.png"
+import ProfileLogo from "../../assets/Profile1.png";
+import { useQuery } from "@apollo/client";
+import { QUERY_ENTRIES } from "../../utils/queries";
 
-function Profile (props) {
-// if not loggedIn, redirect
-  if (!Auth.loggedIn()) {
-    window.location.assign('/Login');
-    return;
-  }
-    return(
-        <container className="bodyContainer">
+function Profile(props) {
+    let email = '';
+
+    try {
+      email = Auth.getProfile().data.email;
+
+    } catch (e) {
+      console.log('Not logged');
+    }
+    const { loading, data } = useQuery(QUERY_ENTRIES, {
+      variables: { email }
+    });
+
+    if (loading) return 'Loading...';
+    // if (error) return `Error! ${error.message}`;
+
+    const entries = data.entries;
+
+    // if not loggedIn, redirect
+    if (!Auth.loggedIn()) {
+        window.location.assign('/Login');
+        return;
+    }
+    return (
+        <div className="bodyContainer">
             <Navigation />
             <div className="flex-row">
                 <div className="card">
@@ -36,7 +55,7 @@ function Profile (props) {
                 </div>
             </div>
             <Footer />
-        </container>
+        </div>
     )
 };
 

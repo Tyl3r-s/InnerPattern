@@ -114,6 +114,7 @@ const resolvers = {
       if (context.user) {
         // for testing
         // const email = "test200@test.com"
+        console.log('anything')
         const response = await Entry.findByIdAndRemove({_id: _id});
         await User.findOneAndUpdate(
           {

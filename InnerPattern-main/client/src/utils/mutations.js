@@ -30,3 +30,11 @@ export const ADD_ENTRY = gql`
     }
   }
 `;
+
+export const DELETE_ENTRY = gql`
+  mutation deleteEntry($id: ID!) {
+    deleteEntry( query: {_id: $id} ) {
+      _id
+    }
+  }
+`;

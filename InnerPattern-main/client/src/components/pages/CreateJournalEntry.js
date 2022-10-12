@@ -56,7 +56,7 @@ const CreateJournalEntry = () => {
   }
 
   return (
-    <container>
+    <div>
       <Navigation />
       <main>
         <div className="journal-form">
@@ -123,7 +123,7 @@ const CreateJournalEntry = () => {
         </div>
       </main>
       <Footer />
-    </container>
+    </div>
   );
 };
 
