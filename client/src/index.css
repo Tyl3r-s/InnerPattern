@@ -567,11 +567,13 @@ footer {
   .landing-logo {
     width: 45%;
     max-width: 50%;
+    margin-bottom: 5vh;
   }
 
   .LandingText {
     padding: 0 40px;
     font-size: 16px;
+    margin-bottom: 5vh;
   }
 
   .btn-container-1 {
