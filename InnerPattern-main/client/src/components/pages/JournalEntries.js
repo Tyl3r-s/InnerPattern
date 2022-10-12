@@ -45,7 +45,7 @@ const JournalEntries = () => {
           <div className="journal-group">
             <div className="entry-group">
               {entries.map((entry) => (
-                <div className="full-width" key={entry._id}>
+                <div className="full-width" key={entry._id} id={entry._id}>
                   <Card.Body>
                     <Card.Title>{entry.title}</Card.Title>
                     <Card.Subtitle><span role="img" aria-label="mood rating">
