@@ -74,16 +74,6 @@ p {
   margin-top: 0;
 }
 
-a {
-  color: var(--tertiary);
-  text-decoration: none;
-  font-weight: bold;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
 #brand-logo {
   width: 180px;
   height: 50px;
@@ -148,12 +138,25 @@ header a {
   text-align: justify;
 }
 
-.LandingBtn {
+.homeBtn {
   background-color: rgb(215, 170, 86);
-  width: 100px;
+  width: 200px;
   text-align: center;
-  border-radius: 5px;
-  margin-bottom: 10vh;
+  border-radius: 10px;
+  padding: 2px 10px 2px 10px;
+  margin: 3vw;
+  color: white;
+  text-decoration: none;
+  opacity: 0.9;
+}
+
+.homeBtn:hover {
+  opacity: 0.8;
+  transition: 0.2s ease-in-out;
+}
+
+.homeBtn:active {
+  opacity: 1;
 }
 
 .profileLogo {
@@ -201,20 +204,6 @@ form {
   justify-content: center;
 }
 
-/* input {
-  font-size: 1rem;
-  padding: 0.25rem;
-  border: 1px solid var(--dark);
-  outline: none;
-  border-radius: 3px;
-  transition: box-shadow 0.2s;
-}
-
-input:focus {
-  border: 1px solid var(--secondary);
-  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5);
-} */
-
 .container {
   width: 85%;
   max-width: 1200px;
@@ -229,8 +218,9 @@ input:focus {
 
 .journal-form,
 .signup-form,
-.login-form {
-  height: 100vh;
+.login-form,
+.profile-form {
+  height: 80vh;
   width: 100%;
   align-items: center;
   display: flex;
@@ -239,12 +229,27 @@ input:focus {
   background: repeating-linear-gradient(45deg, #f9f9f9, transparent 20px);
 }
 
-.signup-form {
-  height: 85vh;
+.profile-form {
+  flex-direction: row;
+  justify-content: center;
 }
 
-.login-form {
-  height: 80vh;
+.profilePic {
+  margin-right: 100px;
+}
+
+.profileLinks {
+  height: 50vh;
+  margin-right: 200px;
+  padding-left: 100px;
+  border-left: 1px solid gray;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profileLinks div {
+  margin: 50px;
 }
 
 .signup-header,
@@ -588,4 +593,27 @@ footer {
   #single-entry-card-text {
     text-align: justify;
   }
+
+  .profileLinks {
+    border: none;
+  }
+
+  .profilePic {
+    margin-top: 9vh;
+    margin-right: 0;
+  }
+  
+  .profileLinks {
+    height: 50vh;
+    margin-right: 0;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .profileLinks div {
+    margin: 35px;
+  }
+
 }

@@ -33,21 +33,19 @@ function Profile(props) {
     return (
         <div className="bodyContainer">
             <Navigation />
-            <div className="flex-row">
-                <div className="card">
+            <div className="flex-row profile-form">
+                <div className="card profilePic">
                     <img src={ProfileLogo} className="profileLogo"></img>
                     <h2>{me.firstName} {me.lastName}</h2>
                     <span>{me.email}</span>
                 </div>
-                <div>
+                <div className="profileLinks">
                     <div>
-                        {/* TODO: add path to Journal */}
                         <Link to="/JournalEntries">
                             Journal Entries
                         </Link>
                     </div>
-                    <div className="card">
-                        {/* TODO: add path to Behaviour activation */}
+                    <div>
                         <Link to="/CreateJournalEntry">
                             Create Entry
                         </Link>

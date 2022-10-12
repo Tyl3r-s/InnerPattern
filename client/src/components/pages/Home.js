@@ -18,10 +18,10 @@ const Home = () => {
             patterns that are generating our suffering.{" "}
           </p>
           <div className="btnContainer1">
-            <a href="/SignUp" className="inputBoxBtn decoration-none home-btn-1">
+            <a href="/SignUp" className="homeBtn">
               Signup
             </a>
-            <a href="/Login" className="inputBoxBtn decoration-none">
+            <a href="/Login" className="homeBtn">
               Login
             </a>
           </div>
