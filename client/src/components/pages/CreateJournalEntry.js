@@ -42,15 +42,17 @@ const CreateJournalEntry = () => {
         const { data } = await addEntry({
           variables: { ...formState, email: Auth.getProfile().data.email },
         });
+        window.location.assign("/JournalEntries");
       } catch (e) {
         console.log(e);
+        alert(e);
       }
     } else {
       console.log("not logged it");
       window.location.assign("/Login");
     }
 
-    window.location.assign("/JournalEntries");
+    // window.location.assign("/JournalEntries");
   };
   // if not loggedIn, redirect
   if (!Auth.loggedIn()) {

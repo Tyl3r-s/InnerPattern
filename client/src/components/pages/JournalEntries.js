@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal, Tab } from 'react-bootstrap';
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { QUERY_ENTRIES } from "../../utils/queries";
 import { useQuery, useMutation } from "@apollo/client";
-import { DELETE_ENTRY, ADD_ENTRY } from "../../utils/mutations";
+import { DELETE_ENTRY, EDIT_ENTRY } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 import Navigation from "../pages/Navigation";
 import Footer from "../pages/Footer";
@@ -15,9 +15,10 @@ const JournalEntries = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [formState, setFormState] = useState({ entryText: "" });
   const { entryText } = formState;
+  const [editingId, setEditingId] = useState("");
 
   const [deleteEntry, { error }] = useMutation(DELETE_ENTRY);
-  const [addEntry] = useMutation(ADD_ENTRY);
+  const [editEntry] = useMutation(EDIT_ENTRY);
 
   const handleDelete = async function (event) {
     event.preventDefault();
@@ -29,6 +30,7 @@ const JournalEntries = () => {
         const { data } = await deleteEntry({
           variables: { id }
         });
+        window.location.reload();
       } catch (e) {
         console.log(e);
       }
@@ -37,17 +39,12 @@ const JournalEntries = () => {
       window.location.assign('/Login');
     }
 
-    window.location.reload();
+    
 
   }
 
   const handleChange = function(e) {
     // console.dir(e.target);
-    if(e.target.ariaLabel === "mood emoji") {
-      console.log(e.target.textContent);
-      setFormState({...formState, ["moodRating"]: e.target.textContent});
-      return;
-    }
     if(!e.target.value.length) {
       setErrorMessage(`${e.target.name} cannot be empty.`)
     } else {
@@ -58,38 +55,36 @@ const JournalEntries = () => {
     }
     console.log(formState);
   }
-
+  // handle submit for edited post
   const handleSubmit = async function(event) {
     event.preventDefault();
-    console.log(Auth.getProfile().data);
+    console.log(editingId);
+    // console.log(Auth.getProfile().data);
     if (Auth.loggedIn()) {
       try {
-        const {data} = await addEntry({
-          variables: {...formState, email: Auth.getProfile().data.email}
+        const {data} = await editEntry({
+          variables: {...formState, email: Auth.getProfile().data.email, id: editingId}
         });
+        setEditingId("");
+        window.location.assign('/JournalEntries');
       } catch (e) {
         console.log(e);
+        alert(e);
       }
     } else {
       console.log('not logged it');
       window.location.assign('/Login');
     }
 
-    window.location.assign('/JournalEntries');
-
   }
 
   // handleEdit event function
   const handleEdit = async function (index) {
-    // event.preventDefault();
-    console.log(index);
-    console.log(entries[index]);
-    // return(
-    //   <>
-    //     <
-    //   </>
-    // )
-
+    // console.log(index);
+    // console.log(entries[index]);
+    setEditingId(entries[index]._id);
+    setShowModal(true);
+    setFormState({...formState, ["entryText"]: entries[index].entryText})
   }
 
   let email = '';
@@ -140,7 +135,7 @@ const JournalEntries = () => {
                         <Button variant="primary" className="check-entry">
                           Check Entry
                         </Button>
-                        <Button onClick={() => setShowModal(true)} variant="primary" className="edit">
+                        <Button onClick={() => handleEdit(index)} variant="primary" className="edit">
                           Edit
                         </Button>
                         <Button onClick={handleDelete} variant="primary" className="delete">

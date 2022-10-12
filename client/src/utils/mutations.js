@@ -36,3 +36,11 @@ export const DELETE_ENTRY = gql`
     deleteEntry(_id: $id)
   }
 `;
+
+export const EDIT_ENTRY = gql`
+mutation editEntry($id: ID!, $entryText: String, $email: String) {
+  editEntry(_id: $id, entryText: $entryText, email: $email) {
+    _id
+  }
+}
+`;
