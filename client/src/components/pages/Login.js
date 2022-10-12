@@ -32,6 +32,7 @@ function Login(props) {
 
   return (
     <div>
+      <Navigation />
       <main>
         <div className="login-form">
           <h4 className="login-header">Login</h4>
@@ -43,7 +44,7 @@ function Login(props) {
                 id="email"
                 onChange={handleChange}
               />
-              <span>Email address:</span>
+              <span>Email:</span>
             </div>
             <div className="inputBox twenty-wide five-margin">
               <input
@@ -72,6 +73,7 @@ function Login(props) {
           </form>
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

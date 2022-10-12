@@ -50,6 +50,7 @@ function Signup(props) {
 
   return (
     <div>
+      <Navigation />
       <main>
         <div className="signup-form">
           <h4 className="signup-header">Sign Up</h4>
@@ -61,7 +62,7 @@ function Signup(props) {
                 id="firstName"
                 onChange={handleChange}
               />
-              <span>First Name:</span>
+              <span>First:</span>
             </div>
             <div className="inputBox twenty-wide five-margin">
               <input
@@ -70,7 +71,7 @@ function Signup(props) {
                 id="lastName"
                 onChange={handleChange}
               />
-              <span>Last Name:</span>
+              <span>Last:</span>
             </div>
             <div className="inputBox twenty-wide five-margin">
               <input
@@ -99,6 +100,7 @@ function Signup(props) {
           </form>
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

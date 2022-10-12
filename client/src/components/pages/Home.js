@@ -1,7 +1,6 @@
 import LandingLogo from "../../assets/mainlogo.png";
 import React from "react";
 import Auth from '../../utils/auth';
-import { Link } from "react-router-dom";
 
 const Home = () => {
   if (Auth.loggedIn()) {
@@ -20,7 +19,7 @@ const Home = () => {
             patterns that are generating our suffering.{" "}
           </p>
           <div className="btnContainer1">
-            <a href="/Profile" className="homeBtn">
+            <a href="/Profile" className="inputBoxBtn landing-btn">
               Account
             </a>
           </div>
@@ -42,11 +41,11 @@ const Home = () => {
             better, become more mindful, and in the process modulate the thought
             patterns that are generating our suffering.{" "}
           </p>
-          <div className="btnContainer1">
-            <a href="/SignUp" className="homeBtn">
+          <div className="btn-container-1">
+            <a href="/SignUp" className="inputBoxBtn five-margin landing-btn">
               Signup
             </a>
-            <a href="/Login" className="homeBtn">
+            <a href="/Login" className="inputBoxBtn five-margin landing-btn">
               Login
             </a>
           </div>

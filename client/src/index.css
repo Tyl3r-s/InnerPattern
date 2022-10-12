@@ -74,20 +74,21 @@ p {
   margin-top: 0;
 }
 
-#brand-logo {
-  width: 280px;
-}
-
 header {
   background: var(--primary);
   position: sticky;
   top: 0;
   z-index: 1000;
+  padding: 15px;
 }
 
 header a {
   color: var(--light);
   padding: 10px;
+}
+
+header a img {
+  width: 45%;
 }
 
 .padding-none {
@@ -186,6 +187,21 @@ button[disabled] {
   opacity: 0.8;
 }
 
+.btn-container-1 {
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.landing-btn {
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 img {
   max-width: 100%;
 }
@@ -221,7 +237,7 @@ form {
 .signup-form,
 .login-form,
 .profile-form {
-  height: 80vh;
+  min-height: 85vh;
   width: 100%;
   align-items: center;
   display: flex;
@@ -258,10 +274,6 @@ form {
   margin-bottom: 35px;
 }
 
-input {
-  text-align: center;
-}
-
 .inputBox,
 .inputBoxBottom {
   position: relative;
@@ -275,7 +287,7 @@ input {
   border: 1px solid #fff;
   background: #47b5ff;
   border-radius: 5px;
-  text-align: left;
+  text-align: center;
   outline: none;
   color: #ffffff;
   font-size: 1em;
@@ -293,7 +305,7 @@ input {
   transition: 0.5s ease-in-out;
 }
 
-.inputBox input:focus~span {
+.inputBox input:focus ~ span {
   color: #445d77;
   transform: translateX(30px) translateY(-7px);
   font-size: 0.65em;
@@ -397,6 +409,21 @@ ul li {
   min-height: 60vh;
 }
 
+.journal-card-title {
+  padding: 10px;
+}
+
+.journal-btn-group {
+  padding: 10px;
+}
+
+.check-entry,
+.edit,
+.delete {
+  margin: 5px;
+  transition: 0.3s ease-in-out;
+}
+
 .entry-group {
   display: flex;
   flex-direction: row;
@@ -466,12 +493,6 @@ footer {
   width: 100%;
 }
 
-.navClass {
-  height: 10vh;
-  display: flex;
-  align-items: center;
-}
-
 .flex-row {
   display: flex;
   flex-wrap: wrap;
@@ -535,7 +556,6 @@ footer {
 }
 
 @media screen and (max-width: 768px) {
-
   .single-entry {
     border-left: none;
   }
@@ -550,6 +570,10 @@ footer {
 
   .LandingText {
     padding: 0 40px;
+  }
+
+  .btn-container-1 {
+    flex-direction: column;
   }
 
   .signup-form,
@@ -625,10 +649,17 @@ footer {
     margin: 35px;
   }
 
+  footer {
+    position: static;
+    bottom: 0;
+  }
+
+  header a img {
+    width: 160px;
+  }
 }
 
 @media screen and (max-width: 768px) {
-
   .single-entry {
     width: 90vw;
     margin-bottom: 20px;
