@@ -15,6 +15,7 @@ const JournalEntries = () => {
   const handleDelete = async function(event) {
     event.preventDefault();
     const id = event.target.parentNode.id
+    console.log(id);
     // console.log(Auth.getProfile().data);
     if (Auth.loggedIn()) {
       try {
@@ -29,7 +30,7 @@ const JournalEntries = () => {
       window.location.assign('/Login');
     }
 
-    // window.location.reload();
+    window.location.reload();
 
   }
 
@@ -81,7 +82,7 @@ const JournalEntries = () => {
                         </span>
                       </Card.Subtitle>
                       <Card.Text>{entry.entryText}</Card.Text>
-                      <div className="journal-btn-group">
+                      <div className="journal-btn-group"  id={entry._id}>
                         <Button variant="primary" className="check-entry">
                           Check Entry
                         </Button>

@@ -93,7 +93,7 @@ const resolvers = {
     },
     editEntry: async (parent, {_id, ...args}, context) => {
       if (context.user) {
-        const entry = await Entry.findByIdAndUpdate( {_id: _id},
+        const entry = await Entry.findByIdAndUpdate( {_id: mongoose.Types.ObjectId(_id)},
           args, {new: true});
         await User.findOneAndUpdate(
           {
@@ -114,9 +114,10 @@ const resolvers = {
       try {
       if (context.user) {
         // for testing
-        // const email = "test200@test.com"
+        // const email = "test200@test.com"        
+        console.log(_id);
         console.log('anything')
-        const response = await Entry.findByIdAndRemove({_id: _id});
+        const response = await Entry.findByIdAndRemove({_id: mongoose.Types.ObjectId(_id)});
         await User.findOneAndUpdate(
           {
             _id: context.user._id
