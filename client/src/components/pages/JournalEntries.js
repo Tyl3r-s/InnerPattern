@@ -3,7 +3,7 @@ import Navigation from "../pages/Navigation";
 import Footer from "../pages/Footer";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import { QUERY_ENTRIES } from "../../utils/queries";
+import { QUERY_ENTRIES, QUERY_ENTRY } from "../../utils/queries";
 import { useQuery, useMutation } from "@apollo/client";
 import { DELETE_ENTRY } from "../../utils/mutations";
 import Auth from "../../utils/auth";
@@ -49,6 +49,15 @@ const JournalEntries = () => {
 
   const entries = data.entries;
 
+  let entrySelect = '';
+
+  const handleCheck = async function(event) {
+    event.preventDefault();
+    const entrySelect = event.target.parentNode.id
+  }
+
+
+
   // if not loggedIn, redirect
   if (!Auth.loggedIn()) {
     window.location.assign("/Login");
@@ -77,9 +86,9 @@ const JournalEntries = () => {
                           {entry.moodRating}
                         </span>
                       </Card.Subtitle>
-                      <Card.Text>{entry.entryText}</Card.Text>
+                      <Card.Text>{entry.createdAt}</Card.Text>
                       <div className="journal-btn-group"  id={entry._id}>
-                        <Button variant="primary" className="check-entry">
+                        <Button onClick={handleCheck} variant="primary" className="check-entry">
                           Check Entry
                         </Button>
                         <Button variant="primary" className="edit">

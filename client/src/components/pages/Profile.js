@@ -41,12 +41,12 @@ function Profile(props) {
                 </div>
                 <div className="profileLinks">
                     <div>
-                        <Link to="/JournalEntries">
+                        <Link to="/JournalEntries" className="homeBtn">
                             Journal Entries
                         </Link>
                     </div>
                     <div>
-                        <Link to="/CreateJournalEntry">
+                        <Link to="/CreateJournalEntry" className="homeBtn">
                             Create Entry
                         </Link>
                     </div>

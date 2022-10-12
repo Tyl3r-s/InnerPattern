@@ -28,6 +28,18 @@ query entries ($email: String!) {
     title
     entryText
     moodRating
+    createdAt
   }
 }
 `;
+
+export const QUERY_ENTRY = gql`
+query entry($id: ID!) {
+  entry(_id: $id) {
+    _id
+    title
+    entryText
+    moodRating
+    createdAt
+  }
+}`

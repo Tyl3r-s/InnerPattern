@@ -75,9 +75,7 @@ p {
 }
 
 #brand-logo {
-  width: 180px;
-  height: 50px;
-  margin: 15px 0;
+  width: 280px;
 }
 
 header {
@@ -98,6 +96,10 @@ header a {
 
 .bodyContainer {
   height: 80vh;
+}
+
+a {
+  text-decoration: none;
 }
 
 .LandingContainer {
@@ -205,8 +207,7 @@ form {
 }
 
 .container {
-  width: 85%;
-  max-width: 1200px;
+  width: 95%;
   margin-left: auto;
   margin-right: auto;
   display: flex;
@@ -292,7 +293,7 @@ input {
   transition: 0.5s ease-in-out;
 }
 
-.inputBox input:focus ~ span {
+.inputBox input:focus~span {
   color: #445d77;
   transform: translateX(30px) translateY(-7px);
   font-size: 0.65em;
@@ -420,9 +421,10 @@ ul li {
 }
 
 .single-entry {
-  align-self: start;
-  padding: 0 25px;
+  display: flex;
+  justify-content: center;
   width: 55%;
+  border-left: 2px solid gray;
 }
 
 .single-entry-card {
@@ -466,6 +468,8 @@ footer {
 
 .navClass {
   height: 10vh;
+  display: flex;
+  align-items: center;
 }
 
 .flex-row {
@@ -531,6 +535,11 @@ footer {
 }
 
 @media screen and (max-width: 768px) {
+
+  .single-entry {
+    border-left: none;
+  }
+
   .card {
     width: 100%;
   }
@@ -602,7 +611,7 @@ footer {
     margin-top: 9vh;
     margin-right: 0;
   }
-  
+
   .profileLinks {
     height: 50vh;
     margin-right: 0;
@@ -611,9 +620,17 @@ footer {
     flex-direction: column;
     justify-content: center;
   }
-  
+
   .profileLinks div {
     margin: 35px;
   }
 
+}
+
+@media screen and (max-width: 768px) {
+
+  .single-entry {
+    width: 90vw;
+    margin-bottom: 20px;
+  }
 }

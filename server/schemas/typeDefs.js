@@ -7,6 +7,7 @@ type Entry {
   title: String!
   entryText: String!
   moodRating: String!
+  createdAt: String
   email: String!
 }
 
