@@ -1,25 +1,30 @@
-import React from "react";
-import Navigation from "../pages/Navigation";
-import Footer from "../pages/Footer";
+import React, { useState } from "react";
+import { Modal, Tab } from 'react-bootstrap';
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import { QUERY_ENTRIES, QUERY_ENTRY } from "../../utils/queries";
+import { QUERY_ENTRIES } from "../../utils/queries";
 import { useQuery, useMutation } from "@apollo/client";
-import { DELETE_ENTRY } from "../../utils/mutations";
+import { DELETE_ENTRY, ADD_ENTRY } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 
 const JournalEntries = () => {
 
-  const [deleteEntry, {error}] = useMutation(DELETE_ENTRY);
+  const [showModal, setShowModal] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [formState, setFormState] = useState({ entryText: "" });
+  const { entryText } = formState;
 
-  const handleDelete = async function(event) {
+  const [deleteEntry, { error }] = useMutation(DELETE_ENTRY);
+  const [addEntry] = useMutation(ADD_ENTRY);
+
+  const handleDelete = async function (event) {
     event.preventDefault();
     const id = event.target.parentNode.id
     console.log(id);
     // console.log(Auth.getProfile().data);
     if (Auth.loggedIn()) {
       try {
-        const {data} = await deleteEntry({
+        const { data } = await deleteEntry({
           variables: { id }
         });
       } catch (e) {
@@ -34,8 +39,46 @@ const JournalEntries = () => {
 
   }
 
+  const handleChange = function(e) {
+    // console.dir(e.target);
+    if(e.target.ariaLabel === "mood emoji") {
+      console.log(e.target.textContent);
+      setFormState({...formState, ["moodRating"]: e.target.textContent});
+      return;
+    }
+    if(!e.target.value.length) {
+      setErrorMessage(`${e.target.name} cannot be empty.`)
+    } else {
+      setErrorMessage('');
+    }
+    if (!errorMessage) {
+      setFormState({...formState, [e.target.name]: e.target.value});
+    }
+    console.log(formState);
+  }
+
+  const handleSubmit = async function(event) {
+    event.preventDefault();
+    console.log(Auth.getProfile().data);
+    if (Auth.loggedIn()) {
+      try {
+        const {data} = await addEntry({
+          variables: {...formState, email: Auth.getProfile().data.email}
+        });
+      } catch (e) {
+        console.log(e);
+      }
+    } else {
+      console.log('not logged it');
+      window.location.assign('/Login');
+    }
+
+    window.location.assign('/JournalEntries');
+
+  }
+
   // handleEdit event function
-  const handleEdit = async function(index) {
+  const handleEdit = async function (index) {
     // event.preventDefault();
     console.log(index);
     console.log(entries[index]);
@@ -62,15 +105,6 @@ const JournalEntries = () => {
 
   const entries = data.entries;
 
-  let entrySelect = '';
-
-  const handleCheck = async function(event) {
-    event.preventDefault();
-    const entrySelect = event.target.parentNode.id
-  }
-
-
-
   // if not loggedIn, redirect
   if (!Auth.loggedIn()) {
     window.location.assign("/Login");
@@ -80,7 +114,6 @@ const JournalEntries = () => {
   return (
     <div>
       <>
-        <Navigation />
         <main>
           <div className="my-journal-section">
             <div className="section-header">
@@ -100,11 +133,11 @@ const JournalEntries = () => {
                         </span>
                       </Card.Subtitle>
                       <Card.Text>{entry.createdAt}</Card.Text>
-                      <div className="journal-btn-group"  id={entry._id}>
-                        <Button onClick={handleCheck} variant="primary" className="check-entry">
+                      <div className="journal-btn-group" id={entry._id}>
+                        <Button variant="primary" className="check-entry">
                           Check Entry
                         </Button>
-                        <Button onClick={() => handleEdit(index)} variant="primary" className="edit">
+                        <Button onClick={() => setShowModal(true)} variant="primary" className="edit">
                           Edit
                         </Button>
                         <Button onClick={handleDelete} variant="primary" className="delete">
@@ -145,7 +178,53 @@ const JournalEntries = () => {
             </div>
           </div>
         </main>
-        <Footer />
+        <Modal
+          size='lg'
+          show={showModal}
+          onHide={() => setShowModal(false)}
+          aria-labelledby='editEntry-modal'>
+          {/* tab container to do either signup or login component */}
+          <Tab.Container defaultActiveKey='login'>
+            <Modal.Header closeButton>
+              <Modal.Title id='Edit Entry'>
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <Tab.Content>
+              <main>
+                  <div className="journal-form">
+                    <form
+                      onSubmit={handleSubmit}
+                    >
+                      <div className="inputBox">
+                        <h4>edit entry</h4>
+                        <input
+                          name="entryText"
+                          type="text"
+                          required="required"
+                          className="inputBoxMessage"
+                          defaultValue={entryText}
+                          onBlur={handleChange}
+                        />
+                        <span>Body:</span>
+                      </div>
+                      <div className="inputBoxBtnContainer">
+                        <button
+                          type="submit"
+                          className="inputBoxBtn"
+                          value="save"
+                          id="submitBtn"
+                        >
+                          Save
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </main>
+              </Tab.Content>
+            </Modal.Body>
+          </Tab.Container>
+        </Modal>
       </>
     </div>
   );

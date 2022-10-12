@@ -46,7 +46,7 @@ const CreateJournalEntry = () => {
       window.location.assign('/Login');
     }
 
-    window.location.assign('/Profile');
+    window.location.assign('/JournalEntries');
 
   }
   // if not loggedIn, redirect

@@ -10,6 +10,8 @@ import Signup from './components/pages/Signup';
 import Profile from './components/pages/Profile';
 import CreateJournalEntry from './components/pages/CreateJournalEntry';
 import JournalEntries from './components/pages/JournalEntries';
+import Navigation from './components/pages/Navigation';
+import Footer from './components/pages/Footer';
 // import Success from './pages/Success'
 
 
@@ -43,16 +45,11 @@ const client = new ApolloClient({
   link: authLink.concat(httpLink),
 });
 
-// const client = new ApolloClient({
-//   link: authLink.concat(httpLink),
-//   cache: new InMemoryCache(),
-// });
-
-// store provider replaced with Redux in index.js
 function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
+        <Navigation />
         <div>
 
           <Switch>
@@ -66,6 +63,7 @@ function App() {
           </Switch>
         
         </div>
+        <Footer />
       </Router>
     </ApolloProvider>
   );
