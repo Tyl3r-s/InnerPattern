@@ -32,6 +32,7 @@ function Login(props) {
 
   return (
     <div>
+      <Navigation />
       <main>
         <div className="login-form">
           <h4 className="login-header">Login</h4>
@@ -72,6 +73,7 @@ function Login(props) {
           </form>
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

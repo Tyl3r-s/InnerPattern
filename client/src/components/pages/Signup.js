@@ -50,6 +50,7 @@ function Signup(props) {
 
   return (
     <div>
+      <Navigation />
       <main>
         <div className="signup-form">
           <h4 className="signup-header">Sign Up</h4>
@@ -99,6 +100,7 @@ function Signup(props) {
           </form>
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

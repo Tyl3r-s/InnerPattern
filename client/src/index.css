@@ -237,7 +237,7 @@ form {
 .signup-form,
 .login-form,
 .profile-form {
-  height: 80vh;
+  min-height: 85vh;
   width: 100%;
   align-items: center;
   display: flex;
@@ -647,6 +647,15 @@ footer {
 
   .profileLinks div {
     margin: 35px;
+  }
+
+  footer {
+    position: static;
+    bottom: 0;
+  }
+
+  header a img {
+    width: 160px;
   }
 }
 
