@@ -1,4 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
+const mongoose = require('mongoose');
 const { User, Entry } = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
@@ -88,46 +89,48 @@ const resolvers = {
 
         return entry;
       }
-      throw new AuthenticationError('You need to be looged in!');
+      throw new AuthenticationError('You need to be logged in!');
     },
-    // editEntry: async (parent, {id, title, entryText, moodRating, email }, context) => {
-    //   if (context.user) {
-    //     const entry = await Entry.findByIdAndUpdate( {_id: id},
-    //       {title, entryText, moodRating}, {new: true});
-    //     // const entry = await Entry.create({...args, email: context.user.email });
-    //     await User.findByIdAndUpdate(
-    //       {
-    //         _id: context.user._id
-    //       },
-    //       {
-    //         $push: { entries: entry._id}
-    //       },
-    //       {
-    //         new: true
-    //       }
-    //     );
+    editEntry: async (parent, {_id, ...args}, context) => {
+      if (context.user) {
+        const entry = await Entry.findByIdAndUpdate( {_id: _id},
+          args, {new: true});
+        await User.findOneAndUpdate(
+          {
+            _id: context.user._id
+          },
+          {
+            $push: { entries: entry._id}
+          },
+          {
+            new: true
+          }
+        );
+        return entry;
+      } 
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    deleteEntry: async (parent, {_id}, context) => {
+      if (context.user) {
+        // for testing
+        // const email = "test200@test.com"
+        const response = await Entry.findByIdAndRemove({_id: _id});
+        await User.findOneAndUpdate(
+          {
+            _id: context.user._id
+          },
+          {
+            $pull: { entries: _id}
+          },
+          {
+            new: true
+          }
+        );
+        return _id;
 
-    //     return entry;
-    //     // ELSE STATEMENT FOR TESTING - TO BE REMOVED
-    //   } else {
-    //     const entry = await Entry.findByIdAndUpdate( {_id: id},
-    //       {title, entryText, moodRating, email}, {new: true});
-    //     // const entry = await Entry.create({...args, email: context.user.email });
-    //     await User.findByIdAndUpdate(
-    //       {
-    //         email: args.email
-    //       },
-    //       {
-    //         $push: { entries: entry._id}
-    //       },
-    //       {
-    //         new: true
-    //       }
-    //     );
-
-    //     return entry;
-    //   }
-    // }
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    }
   }
 };
 
