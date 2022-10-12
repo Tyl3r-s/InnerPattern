@@ -34,6 +34,19 @@ const JournalEntries = () => {
 
   }
 
+  // handleEdit event function
+  const handleEdit = async function(index) {
+    // event.preventDefault();
+    console.log(index);
+    console.log(entries[index]);
+    // return(
+    //   <>
+    //     <
+    //   </>
+    // )
+
+  }
+
   let email = '';
 
   try {
@@ -75,7 +88,7 @@ const JournalEntries = () => {
             </div>
             <div className="journal-group">
               <div className="entry-group">
-                {entries.map((entry) => (
+                {entries.map((entry, index) => (
                   <div className="full-width" key={entry._id}>
                     <Card.Body>
                       <Card.Title className="journal-card-title">
@@ -91,7 +104,7 @@ const JournalEntries = () => {
                         <Button onClick={handleCheck} variant="primary" className="check-entry">
                           Check Entry
                         </Button>
-                        <Button variant="primary" className="edit">
+                        <Button onClick={() => handleEdit(index)} variant="primary" className="edit">
                           Edit
                         </Button>
                         <Button onClick={handleDelete} variant="primary" className="delete">
