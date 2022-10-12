@@ -18,22 +18,12 @@ const Home = () => {
             patterns that are generating our suffering.{" "}
           </p>
           <div className="btnContainer1">
-            <div className="LandingBtn">
-              <Link
-                to="/SignUp"
-                style={{ textDecoration: "none", color: "white" }}
-              >
-                Signup
-              </Link>
-            </div>
-            <div className="LandingBtn">
-              <Link
-                to="/Login"
-                style={{ textDecoration: "none", color: "white" }}
-              >
-                Login
-              </Link>
-            </div>
+            <a href="/SignUp" className="inputBoxBtn decoration-none home-btn-1">
+              Signup
+            </a>
+            <a href="/Login" className="inputBoxBtn decoration-none">
+              Login
+            </a>
           </div>
         </div>
       </div>
