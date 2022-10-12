@@ -106,6 +106,10 @@ header a {
   padding: 0;
 }
 
+.bodyContainer {
+  height: 80vh;
+}
+
 .LandingContainer {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(./assets/LandingBG.jpg);
@@ -117,30 +121,31 @@ header a {
   grid-template: 1fr / 1fr;
   place-items: center;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
   font-family: "Montserrat", sans-serif;
 }
 
 .divContainer {
-  width: 701px;
+  width: 100%;
   display: flex;
+  align-items: center;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
 }
 
 .LandingLogo {
-  width: 400px;
+  width: 20rem;
   margin-bottom: 10vh;
 }
 
 .LandingText {
-  width: 700px;
+  width: 100%;
+  padding: 0 20%;
   color: white;
   letter-spacing: 2px;
   margin-bottom: 10vh;
   font-weight: 300;
-  text-align: center;
+  text-align: justify;
 }
 
 .LandingBtn {
@@ -408,6 +413,7 @@ ul li {
 .single-entry {
   align-self: start;
   padding: 0 25px;
+  width: 55%;
 }
 
 .single-entry-card {
@@ -444,9 +450,13 @@ footer {
   background: var(--primary);
   color: #ffffff;
   justify-content: center;
-  height: 5rem;
+  height: 10vh;
   padding: 20px;
   width: 100%;
+}
+
+.navClass {
+  height: 10vh;
 }
 
 .flex-row {
@@ -514,5 +524,64 @@ footer {
 @media screen and (max-width: 768px) {
   .card {
     width: 100%;
+  }
+
+  .landing-logo {
+    width: 65%;
+  }
+
+  .LandingText {
+    padding: 0 40px;
+  }
+
+  .signup-form,
+  .login-form,
+  .journal-form {
+    padding: 5vh 0;
+    justify-content: flex-start;
+  }
+
+  .five-margin {
+    margin-bottom: 5vh;
+  }
+
+  .twenty-wide {
+    width: 75vw;
+  }
+
+  form {
+    width: 85%;
+  }
+
+  .section-header {
+    width: 100%;
+    text-align: center;
+    padding: 5vh 0;
+  }
+
+  .journal-group {
+    flex-direction: column;
+  }
+
+  .entry-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .full-width {
+    width: 100%;
+    margin-bottom: 2vh;
+  }
+
+  .card-text {
+    text-align: center;
+  }
+
+  .single-entry-card {
+    width: 85vw;
+  }
+
+  #single-entry-card-text {
+    text-align: justify;
   }
 }
