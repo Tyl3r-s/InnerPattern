@@ -111,6 +111,7 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
     deleteEntry: async (parent, {_id}, context) => {
+      try {
       if (context.user) {
         // for testing
         // const email = "test200@test.com"
@@ -130,6 +131,9 @@ const resolvers = {
         return _id;
 
       }
+    }catch(e){
+      console.log(e)
+    }
       throw new AuthenticationError('You need to be logged in!');
     }
   }

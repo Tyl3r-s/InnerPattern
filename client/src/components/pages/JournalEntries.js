@@ -88,7 +88,7 @@ const JournalEntries = () => {
                         <Button variant="primary" className="edit">
                           Edit
                         </Button>
-                        <Button variant="primary" className="delete">
+                        <Button onClick={handleDelete} variant="primary" className="delete">
                           Delete
                         </Button>
                       </div>
