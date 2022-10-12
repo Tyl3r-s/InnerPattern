@@ -10,6 +10,17 @@ export const QUERY_USER = gql`
   }
 `;
 
+export const QUERY_ME = gql`
+  {
+    me {
+      _id
+      firstName
+      lastName
+      email
+    }
+  }
+`;
+
 export const QUERY_ENTRIES = gql`
 query entries ($email: String!) {
   entries (email: $email) {

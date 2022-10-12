@@ -38,18 +38,14 @@ const JournalEntries = () => {
 
   try {
     email = Auth.getProfile().data.email;
-    // for testing
-    // const email = "test@test.com";
   } catch (e) {
     console.log("Not logged");
   }
   const { loading, data } = useQuery(QUERY_ENTRIES, {
     variables: { email },
   });
-  // const {loading, error, data} = useQuery(QUERY_ENTRIES);
 
   if (loading) return "Loading...";
-  // if (error) return `Error! ${error.message}`;
 
   const entries = data.entries;
 

@@ -5,25 +5,25 @@ import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
 import ProfileLogo from "../../assets/Profile1.png";
 import { useQuery } from "@apollo/client";
-import { QUERY_ENTRIES } from "../../utils/queries";
+import { QUERY_ME } from "../../utils/queries";
 
 function Profile(props) {
-    let email = '';
+    let id = '';
 
     try {
-      email = Auth.getProfile().data.email;
+      id = Auth.getProfile().data.id;
 
     } catch (e) {
       console.log('Not logged');
     }
-    const { loading, data } = useQuery(QUERY_ENTRIES, {
-      variables: { email }
+    const { loading, data } = useQuery(QUERY_ME, {
+      variables: { id }
     });
 
     if (loading) return 'Loading...';
     // if (error) return `Error! ${error.message}`;
 
-    const entries = data.entries;
+    const me = data.me;
 
     // if not loggedIn, redirect
     if (!Auth.loggedIn()) {
@@ -36,8 +36,8 @@ function Profile(props) {
             <div className="flex-row">
                 <div className="card">
                     <img src={ProfileLogo} className="profileLogo"></img>
-                    <h2>Your Name</h2>
-                    <span>youremail@test.com</span>
+                    <h2>{me.firstName} {me.lastName}</h2>
+                    <span>{me.email}</span>
                 </div>
                 <div>
                     <div>
