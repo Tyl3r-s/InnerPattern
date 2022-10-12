@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Modal, Tab } from 'react-bootstrap';
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
@@ -10,6 +10,9 @@ import Navigation from "../pages/Navigation";
 import Footer from "../pages/Footer";
 
 const JournalEntries = () => {
+
+  const [currentEntry, setCurrentEntry] = useState({ currentText: "", currentTitle: "", currentDate: "", currentMood: "" })
+  const { currentDate, currentText, currentMood, currentTitle } = currentEntry;
 
   const [showModal, setShowModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -87,6 +90,14 @@ const JournalEntries = () => {
     setFormState({...formState, ["entryText"]: entries[index].entryText})
   }
 
+  const handleCheck = async function (index) {
+    setCurrentEntry({ 
+      currentText: entries[index].entryText, 
+      currentDate: entries[index].createdAt, 
+      currentTitle: entries[index].title, 
+      currentMood: entries[index].moodRating })
+  }
+
   let email = '';
 
   try {
@@ -107,6 +118,8 @@ const JournalEntries = () => {
     window.location.assign("/Login");
     return;
   }
+
+
 
   return (
     <div>
@@ -132,7 +145,7 @@ const JournalEntries = () => {
                       </Card.Subtitle>
                       <Card.Text>{entry.createdAt}</Card.Text>
                       <div className="journal-btn-group" id={entry._id}>
-                        <Button variant="primary" className="check-entry">
+                        <Button onClick={() => handleCheck(index)} variant="primary" className="check-entry">
                           Check Entry
                         </Button>
                         <Button onClick={() => handleEdit(index)} variant="primary" className="edit">
@@ -149,27 +162,19 @@ const JournalEntries = () => {
               <div className="single-entry">
                 <div className="single-entry-card">
                   <Card.Header className="entry-card-header">
-                    Had a good day with the fam
+                    {currentTitle}
                   </Card.Header>
                   <hr></hr>
                   <Card.Body>
                     <Card.Title className="entry-card-title">
-                      😁
+                      {currentMood}
                       <br></br>
-                      <span className="weak-text">3:35 on Jan 7 2022</span>
+                      <span className="weak-text">{currentDate}</span>
                     </Card.Title>
                     <hr></hr>
                     <Card.Text id="single-entry-card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content. Some quick example
-                      text to build on the card title and make up the bulk of
-                      the card's content. Some quick example text to build on
-                      the card title and make up the bulk of the card's content.
+                      {currentText}
                     </Card.Text>
-                    <div className="single-entry-btn-group">
-                      <Button variant="primary" className="edit">Edit</Button>
-                      <Button variant="primary" className="delete">Delete</Button>
-                    </div>
                   </Card.Body>
                 </div>
               </div>
