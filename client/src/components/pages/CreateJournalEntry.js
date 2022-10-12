@@ -60,7 +60,6 @@ const CreateJournalEntry = () => {
 
   return (
     <div>
-      <Navigation />
       <main>
         <div className="journal-form">
           <form onSubmit={handleSubmit}>
@@ -133,7 +132,6 @@ const CreateJournalEntry = () => {
           </form>
         </div>
       </main>
-      <Footer />
     </div>
   );
 };

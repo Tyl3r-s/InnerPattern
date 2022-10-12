@@ -50,7 +50,6 @@ function Signup(props) {
 
   return (
     <div>
-      <Navigation />
       <main>
         <div className="signup-form">
           <h4 className="signup-header">Sign Up</h4>
@@ -93,14 +92,13 @@ function Signup(props) {
             </div>
             <div className="inputBoxBtnContainer">
               <button type="submit" className="inputBoxBtn">
-                Submit
+                Sign Up
               </button>
             </div>
             <p>Already Have An Account? <a href="/Login">Login</a></p>
           </form>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }
