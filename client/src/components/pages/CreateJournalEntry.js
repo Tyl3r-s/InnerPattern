@@ -68,7 +68,7 @@ const CreateJournalEntry = () => {
           <form onSubmit={handleSubmit}>
             <div className="inputBox">
               <h4 className="journal-header" id="journal-header">
-                give your entry a descriptive title
+                Create A Title
               </h4>
               <input
                 type="text"
@@ -81,7 +81,7 @@ const CreateJournalEntry = () => {
               <span>Title:</span>
             </div>
             <div className="inputBox">
-              <h4>create your journal entry</h4>
+              <h4>Write An Entry</h4>
               <input
                 name="entryText"
                 type="text"
@@ -93,7 +93,7 @@ const CreateJournalEntry = () => {
               <span>Body:</span>
             </div>
             <div className="inputBoxBottom">
-              <h4>select your mood</h4>
+              <h4>Select Your Mood</h4>
               <ul className="moods" id="moodRating" onClick={handleChange}>
                 <li className="mood" id="mood-1">
                   <span role="img" aria-label="mood emoji">
