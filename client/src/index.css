@@ -246,6 +246,18 @@ form {
   background: repeating-linear-gradient(45deg, #f9f9f9, transparent 20px);
 }
 
+.disclaimer-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  background: repeating-linear-gradient(45deg, #f9f9f9, transparent 20px);
+}
+
+.disclaimerText {
+  width: 80vw;
+}
+
 .profile-form {
   flex-direction: row;
   justify-content: center;
@@ -484,6 +496,7 @@ ul li {
 
 footer {
   display: flex;
+  flex-direction: column;
   align-items: center;
   background: var(--primary);
   color: #ffffff;
@@ -491,6 +504,12 @@ footer {
   height: 10vh;
   padding: 20px;
   width: 100%;
+}
+
+.disclaimer {
+  color: white;
+  font-size: 12px;
+  margin-top: 10px;
 }
 
 .flex-row {
