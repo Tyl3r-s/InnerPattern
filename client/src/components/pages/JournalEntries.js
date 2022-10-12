@@ -6,6 +6,8 @@ import { QUERY_ENTRIES } from "../../utils/queries";
 import { useQuery, useMutation } from "@apollo/client";
 import { DELETE_ENTRY, ADD_ENTRY } from "../../utils/mutations";
 import Auth from "../../utils/auth";
+import Navigation from "../pages/Navigation";
+import Footer from "../pages/Footer";
 
 const JournalEntries = () => {
 
@@ -114,6 +116,7 @@ const JournalEntries = () => {
   return (
     <div>
       <>
+      <Navigation />
         <main>
           <div className="my-journal-section">
             <div className="section-header">
@@ -225,6 +228,7 @@ const JournalEntries = () => {
             </Modal.Body>
           </Tab.Container>
         </Modal>
+        <Footer />
       </>
     </div>
   );

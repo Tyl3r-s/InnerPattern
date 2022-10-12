@@ -1,11 +1,11 @@
 import React from "react";
-import Navigation from "../pages/Navigation";
-import Footer from "../pages/Footer";
 import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
 import ProfileLogo from "../../assets/Profile1.png";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../../utils/queries";
+import Navigation from "../pages/Navigation";
+import Footer from "../pages/Footer";
 
 function Profile(props) {
     let id = '';

@@ -44,7 +44,7 @@ function Login(props) {
                 id="email"
                 onChange={handleChange}
               />
-              <span>Email address:</span>
+              <span>Email:</span>
             </div>
             <div className="inputBox twenty-wide five-margin">
               <input

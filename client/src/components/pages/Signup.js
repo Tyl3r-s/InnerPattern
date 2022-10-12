@@ -62,7 +62,7 @@ function Signup(props) {
                 id="firstName"
                 onChange={handleChange}
               />
-              <span>First Name:</span>
+              <span>First:</span>
             </div>
             <div className="inputBox twenty-wide five-margin">
               <input
@@ -71,7 +71,7 @@ function Signup(props) {
                 id="lastName"
                 onChange={handleChange}
               />
-              <span>Last Name:</span>
+              <span>Last:</span>
             </div>
             <div className="inputBox twenty-wide five-margin">
               <input
