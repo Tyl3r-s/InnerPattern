@@ -39,11 +39,15 @@ This web application features:
 
 ## Table of Contents
 
-- [installation](#installation)
-- [contribution guidelines](#contribution)
+- [Purpose](#purpose)
+- [User Story](#user-story)
+- [Features](#features)
+- [Built With](#built-with)
+- [Installation](#installation)
+- [Contribution Guidelines](#contribution)
 - [Test Instructions](#testing)
 - [License](#license)
-- [Questions](#questions)
+- [Screenhots](#screenshots)
 
 ### Installation
 1. Please clone the github repo here : https://github.com/Vinyldude8896/book_search_app
