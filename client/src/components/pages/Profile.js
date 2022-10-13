@@ -32,29 +32,27 @@ function Profile(props) {
   return (
     <div>
       <Navigation />
-      <div className="bodyContainer">
-        <div className="flex-row profile-form">
-          <div className="card profilePic">
-            <img src={ProfileLogo} className="profileLogo"></img>
-            <h2>
-              {me.firstName} {me.lastName}
-            </h2>
-            <span>{me.email}</span>
-          </div>
-          <div className="profileLinks">
-            <div>
-              <Link to="/JournalEntries" className="homeBtn">
-                Journal Entries
-              </Link>
+      <main>
+        <div className="bodyContainer">
+          <div className="flex-row profile-form">
+            <div className="card profilePic">
+              <img src={ProfileLogo} className="profileLogo"></img>
+              <h2>
+                {me.firstName} {me.lastName}
+              </h2>
+              <span>{me.email}</span>
             </div>
-            <div>
-              <Link to="/CreateJournalEntry" className="homeBtn">
+            <div className="profileLinks">
+              <a href="/JournalEntries" className="inputBoxBtn extended">
+                Journal Entries
+              </a>
+              <a href="/CreateJournalEntry" className="inputBoxBtn extended">
                 Create Entry
-              </Link>
+              </a>
             </div>
           </div>
         </div>
-      </div>
+      </main>
       <Footer />
     </div>
   );

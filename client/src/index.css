@@ -107,7 +107,7 @@ a {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(./assets/LandingBG.jpg);
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   background-size: cover;
   background-position: center;
   display: grid;
@@ -263,22 +263,23 @@ form {
   justify-content: center;
 }
 
-.profilePic {
-  margin-right: 100px;
-}
-
 .profileLinks {
   height: 50vh;
-  margin-right: 200px;
-  padding-left: 100px;
+  width: 50%;
+  /* margin-right: 200px; */
+  /* padding-left: 100px; */
   border-left: 1px solid gray;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .profileLinks div {
   margin: 50px;
+  height: auto;
+  width: 10rem;
+  padding: 5px;
 }
 
 .signup-header,
@@ -367,6 +368,12 @@ form {
   border-radius: 5px;
   letter-spacing: 1.25px;
   margin-bottom: 5%;
+}
+
+.extended {
+  height: auto;
+  width: 30%;
+  padding: 10px;
 }
 
 .inputBoxBtn:hover {
@@ -499,7 +506,7 @@ footer {
   background: var(--primary);
   color: #ffffff;
   justify-content: center;
-  height: 10vh;
+  min-height: 15vh;
   padding: 20px;
   width: 100%;
 }
@@ -564,7 +571,7 @@ footer {
 }
 
 .card {
-  width: 25%;
+  width: 50%;
   text-align: center;
 }
 
@@ -581,7 +588,7 @@ footer {
     width: 100%;
   }
 
-  .landing-logo {
+  .LandingLogo {
     width: 45%;
     max-width: 50%;
     margin-bottom: 5vh;
@@ -648,17 +655,14 @@ footer {
     text-align: justify;
   }
 
-  .profileLinks {
-    border: none;
-  }
-
   .profilePic {
     margin-top: 5vh;
-    margin-right: 0;
   }
 
   .profileLinks {
-    height: 50vh;
+    border: none;
+    height: 150px;
+    width: 100%;
     margin-right: 0;
     padding-left: 0;
     display: flex;
@@ -667,7 +671,7 @@ footer {
   }
 
   .profileLinks div {
-    margin: 35px;
+    margin: 25px;
   }
 
   .divContainer {
@@ -676,10 +680,6 @@ footer {
 
   .profileLogo {
     width: 25%;
-  }
-
-  footer {
-    z-index: 1000;
   }
 
   header a img {
