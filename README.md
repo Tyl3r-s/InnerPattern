@@ -1,9 +1,30 @@
 # InnerPattern
 
-## Purpose
+### Purpose
 A MERN stack single-page application where users can track their thoughts and 'moods' through journal entries.
 
-## Built With
+### User Story
+As a user I want to
+* Have access to a personal journal where I can track my thought and mood tendencies
+When I select ‘Sign Up’
+* I am able to create an account where my journal entries will be stored
+When I select ‘Log In’
+* I am able to access my personal account
+When I select journal entries from my account, and select the title form
+* I can enter a unique title for my current log
+When I select the text form
+* I can write a descriptive journal entry
+When I select a mood emoji
+* I can then press save and archive my entry
+When I return to journal entries, from my account
+* I am able to edit and delete my entries
+
+### Features
+This web application features:
+* A secured login 
+* A personal journal tied to account, to use from anywhere, with the ability to edit and delete
+
+### Built With
 * Node
 * Express
 * React
@@ -16,19 +37,47 @@ A MERN stack single-page application where users can track their thoughts and 'm
 * Bcrypt
 * JWT
 
-## Github Repo
-https://github.com/Tyl3r-s/InnerPattern
+## Table of Contents
 
-## Contributors 
+- [installation](#installation)
+- [contribution guidelines](#contribution)
+- [Test Instructions](#testing)
+- [License](#license)
+- [Questions](#questions)
+
+### Installation
+1. Please clone the github repo here : https://github.com/Vinyldude8896/book_search_app
+2. Run npm install to install the dependecies.
+3. Then at the root folder, run npm start and go to:
+http://localhost:3000/#home
+
+You can also view the deploiyed app here: <br />
+http://innerpattern.herokuapp.com/
+
+
+### Contribution Guidelines
+Current contributers:
 * Moshe Gadol https://github.com/Moshe-jpg
 * Omar Rodriguez https://github.com/nickless192
 * William Chow https://github.com/hippobb
 * Tyler Scott https://github.com/Tyl3r-s
 
-## deployed site
-http://innerpattern.herokuapp.com/
 
-## Screenshots 
+### Testing
+
+1. Clone repo: https://github.com/Tyl3r-s/InnerPattern <br />
+2. Install depenencies using npm install <br />
+3. From the root folder run npm start <br />
+4. Browser should open <br />
+5. Create an account <br />
+6. Try logout and logging back in <br />
+7. Click on create entry, and put in your title, text entry, and mood rating <br />
+8. Go to entries page <br />
+9. Confirm that your 'check' button pulls up your full entry <br />
+10. Try deleting a book from your saved books section <br />
+11. Try to edit one of your entries and confirm that it saves<br />
+
+### Screenshots
 
 ![innerpattern1](https://user-images.githubusercontent.com/103789071/195421586-2d8a599e-d49c-47b3-886c-c0dd886d0eb4.png)
 
