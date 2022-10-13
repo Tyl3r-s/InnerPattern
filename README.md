@@ -57,7 +57,7 @@ This web application features:
 3. Then at the root folder, run npm start and go to:
 http://localhost:3000/#home
 
-You can also view the deploiyed app here: <br />
+### You can view the deployed app here: <br />
 http://innerpattern.herokuapp.com/
 
 
