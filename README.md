@@ -15,7 +15,8 @@
 ### Purpose
 A MERN stack single-page application where users can track their thoughts and 'moods' through journal entries.
 
-### User Story </br>
+### User Story 
+
 As a user I want to </br>
 * Have access to a personal journal where I can track my thought and mood tendencies </br>
 When I select ‘Sign Up’ </br>
