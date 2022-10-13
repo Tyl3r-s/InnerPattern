@@ -582,11 +582,15 @@ footer {
   }
 
   .landing-logo {
-    width: 65%;
+    width: 45%;
+    max-width: 50%;
+    margin-bottom: 5vh;
   }
 
   .LandingText {
     padding: 0 40px;
+    font-size: 16px;
+    margin-bottom: 5vh;
   }
 
   .btn-container-1 {
@@ -649,7 +653,7 @@ footer {
   }
 
   .profilePic {
-    margin-top: 9vh;
+    margin-top: 5vh;
     margin-right: 0;
   }
 
@@ -666,9 +670,16 @@ footer {
     margin: 35px;
   }
 
+  .divContainer {
+    width: 85%;
+  }
+
+  .profileLogo {
+    width: 25%;
+  }
+
   footer {
-    position: static;
-    bottom: 0;
+    z-index: 1000;
   }
 
   header a img {
