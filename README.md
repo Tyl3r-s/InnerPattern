@@ -12,10 +12,10 @@
 - [License](#license)
 - [Screenhots](#screenshots)
 
-### Purpose
+## Purpose
 A MERN stack single-page application where users can track their thoughts and 'moods' through journal entries.
 
-### User Story </br>
+## User Story </br>
 </br>
 
 **As a user I want to** </br>
@@ -33,12 +33,12 @@ I can then press save and archive my entry </br>
 **When I return to journal entries, from my account** </br>
 I am able to edit and delete my entries </br>
 
-### Features
+## Features
 This web application features:
 * A secured login 
 * A personal journal tied to account, to use from anywhere, with the ability to edit and delete
 
-### Built With
+## Built With
 * Node
 * Express
 * React
@@ -51,7 +51,7 @@ This web application features:
 * Bcrypt
 * JWT
 
-### Installation
+## Installation
 1. Please clone the github repo here : https://github.com/Vinyldude8896/book_search_app
 2. Run npm install to install the dependecies.
 3. Then at the root folder, run npm start and go to:
@@ -61,7 +61,7 @@ You can also view the deploiyed app here: <br />
 http://innerpattern.herokuapp.com/
 
 
-### Contribution Guidelines
+## Contribution Guidelines
 Current contributers:
 * Moshe Gadol https://github.com/Moshe-jpg
 * Omar Rodriguez https://github.com/nickless192
@@ -69,7 +69,7 @@ Current contributers:
 * Tyler Scott https://github.com/Tyl3r-s
 
 
-### Testing
+## Testing
 
 1. Clone repo: https://github.com/Tyl3r-s/InnerPattern <br />
 2. Install dependencies using npm install <br />
@@ -83,7 +83,7 @@ Current contributers:
 10. Try deleting a book from your saved books section <br />
 11. Try to edit one of your entries and confirm that it saves<br />
 
-### Screenshots
+## Screenshots
 
 ![innerpattern1](https://user-images.githubusercontent.com/103789071/195421586-2d8a599e-d49c-47b3-886c-c0dd886d0eb4.png)
 
