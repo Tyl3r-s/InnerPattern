@@ -70,11 +70,11 @@ Current contributers:
 ### Testing
 
 1. Clone repo: https://github.com/Tyl3r-s/InnerPattern <br />
-2. Install depenencies using npm install <br />
-3. From the root folder run npm start <br />
-4. Browser should open <br />
+2. Install dependencies using npm install <br />
+3. From the root folder, run: npm start <br />
+4. React app should open in browser <br />
 5. Create an account <br />
-6. Try logout and logging back in <br />
+6. Try to log out, then log back in <br />
 7. Click on create entry, and put in your title, text entry, and mood rating <br />
 8. Go to entries page <br />
 9. Confirm that your 'check' button pulls up your full entry <br />
