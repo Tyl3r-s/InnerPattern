@@ -17,20 +17,20 @@ A MERN stack single-page application where users can track their thoughts and 'm
 
 ### User Story </br>
 </br>
-As a user I want to </br>
-* Have access to a personal journal where I can track my thought and mood tendencies </br>
-When I select ‘Sign Up’ </br>
-* I am able to create an account where my journal entries will be stored </br>
-When I select ‘Log In’ </br>
-* I am able to access my personal account </br>
-When I select journal entries from my account, and select the title form </br>
-* I can enter a unique title for my current log </br>
-When I select the text form </br>
-* I can write a descriptive journal entry </br>
-When I select a mood emoji </br>
-* I can then press save and archive my entry </br>
-When I return to journal entries, from my account </br>
-* I am able to edit and delete my entries </br>
+**As a user I want to** </br>
+*Have access to a personal journal where I can track my thought and mood tendencies </br>  
+**When I select ‘Sign Up’** </br>
+*I am able to create an account where my journal entries will be stored </br>
+**When I select ‘Log In’** </br>
+*I am able to access my personal account </br>
+**When I select journal entries from my account, and select the title form** </br>
+*I can enter a unique title for my current log </br>
+**When I select the text form** </br>
+*I can write a descriptive journal entry </br>
+**When I select a mood emoji** </br>
+*I can then press save and archive my entry </br>
+**When I return to journal entries, from my account** </br>
+*I am able to edit and delete my entries </br>
 
 ### Features
 This web application features:
