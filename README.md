@@ -50,6 +50,7 @@ This web application features:
 * Apollo
 * Bcrypt
 * JWT
+* React Router
 
 ## Installation
 1. Please clone the github repo here : https://github.com/Vinyldude8896/book_search_app
